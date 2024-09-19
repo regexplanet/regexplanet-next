@@ -1,0 +1,13 @@
+#
+# almost empty: everything at RegexPlanet is indexable!
+#
+Sitemap: https://www.regexplanet.com/sitemap.xml
+
+User-agent: *
+Disallow: /honeypot.txt
+
+#
+# bandwidth hog: http://www.majestic12.co.uk/projects/dsearch/mj12bot.php
+#
+User-agent: MJ12bot
+Crawl-Delay: 120

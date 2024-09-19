@@ -1,0 +1,14 @@
+:root {
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-font-sans-serif: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+    --bs-font-serif: "IBM Plex Serif", serif;
+    --bs-font-monospace: "IBM Plex Mono", monospace;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: var(--bs-font-sans-serif);
+    --bs-body-font-size: 1.25em;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #212121;
+    --bs-body-bg: #fff;
+}
