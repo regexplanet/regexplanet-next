@@ -4,6 +4,7 @@ import type { Viewport } from 'next'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import './global.css'
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "RegexPlanet",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <div className="container-lg mt-4">
         {children}
         </div>
+        <Footer />
       </body>
     </html>
   );

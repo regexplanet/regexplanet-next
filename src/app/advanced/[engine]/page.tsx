@@ -1,5 +1,5 @@
-import React from 'react';
+import { redirect } from 'next/navigation'
 
-export default function Page({ params }: { params: { engine: string } }) {
-    return <h1>Hello, : { params.engine }</h1>
+export default async function Page({ params }: { params: { engine: string } }) {
+    redirect(`/advanced/${params.engine}/index.html`);
 }

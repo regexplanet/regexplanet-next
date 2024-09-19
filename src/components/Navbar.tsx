@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link';
 
 const links = [
-    { link: '/testing/index.html', label: 'Testing' },
-    { link: '/advanced/status.html', label: 'Status' },
-    { link: '/support/index.html', label: 'Support' },
+    { link: '/', label: 'Testing', startsWith: '/advanced/' },
+    { link: '/status.html', label: 'Status', startsWith: '/status.html'},
+    { link: '/support/index.html', label: 'Support', startsWith: '/support/' },
 ];
 
 export function Navbar() {
@@ -16,7 +16,7 @@ export function Navbar() {
     const items = links.map((link) => (
         <li className="nav-item" key={link.label} >
             <Link
-                className={pathname.startsWith(link.link) ? 'nav-link active fw-bold' : 'nav-link'}
+                className={pathname.startsWith(link.startsWith) ? 'nav-link active fw-bold' : 'nav-link'}
                 href={link.link}
             >
                 {link.label}
