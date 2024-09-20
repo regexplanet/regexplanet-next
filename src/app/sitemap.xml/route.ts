@@ -6,7 +6,10 @@ const ROOT = "https://www.regexplanet.com";
 export async function GET() {
   const urls = [
     `/`,
+    `/legal/privacy.html`,
+    `/legal/terms.html`,
     `/status.html`,
+    `/support/contact.html`,
     `/support/index.html`,
     `/support/javascript.html`,
   ];

@@ -1,8 +1,11 @@
 import Link from 'next/link';
 
 const links = [
-    { link: 'https://github.com/regexplanet/regexplanet-next', label: 'Source' },
     { link: 'https://github.com/regexplanet/regexplanet-next?tab=readme-ov-file#credits', label: 'Credits' },
+    { link: 'https://github.com/regexplanet/regexplanet-next', label: 'Source' },
+    { link: '/support/contact.html', label: 'Contact' },
+    { link: '/legal/privacy.html', label: 'Privacy Policy' },
+    { link: '/legal/terms.html', label: 'Terms of Service' },
     //LATER: privacy, terms, etc
 ];
 

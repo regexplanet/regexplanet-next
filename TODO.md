@@ -1,12 +1,10 @@
 # To Do
 
 
-- [ ] fill in changelog
-- [ ] /support/contact.html
-- [ ] /advanced/options.html: probably want to redo how these work (each service has 2-way map of specific:common)
-- [ ] EngineButton: add color for alpha/beta 
-- [ ] /support/privacy.html
-- [ ] /support/terms.html
+
+- [ ] [analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
+- [ ] get engine release level from remote instead of hard-coded
+- [ ] display status (and alpha/beta warning) on testing page
 - [ ] card per engine on /support/index.html
 
 ## Move to Regex.zone
@@ -59,6 +57,7 @@ Other lists:
 
 ## Future
 
+- [ ] /advanced/options.html: probably want to redo how these work (each service has 2-way map of specific:common)
 - [ ] [colorizer](https://github.com/slevithan/regex-colorizer)
 - [ ] translations
 - [ ] Fuzzing

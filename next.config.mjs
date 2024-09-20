@@ -49,6 +49,21 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: '/support/license.html',
+        destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/LICENSE.txt',
+        permanent: false,
+      },
+      {
+        source: '/support/privacy.html',
+        destination: '/legal/privacy.html',
+        permanent: false,
+      },
+      {
+        source: '/support/terms.html',
+        destination: '/legal/terms.html',
+        permanent: false,
+      },
+      {
         source: '/support/todo.html',
         destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/TODO.md',
         permanent: false,

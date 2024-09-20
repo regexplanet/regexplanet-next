@@ -48,6 +48,7 @@
 * 2012-05-06: JavaScript beta
 * 2012-03-17: Go beta
 * 2012-01-12: dotNet golden
+* 2011-12-14: Python beta
 * 2011-12-11: Java bumped
 * 2011-12-11: dotNet beta
 * 2011-12-10: Java separated from www
