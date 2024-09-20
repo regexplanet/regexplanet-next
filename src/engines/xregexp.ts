@@ -6,6 +6,7 @@ export const xregexp: RegexEngine = {
   help_label: "XRegExp Syntax",
   help_url: "",
   handle: "xregexp",
+  javascript: true,
   level: "golden",
   links: {
     "XRegExp option flags": "http://xregexp.com/flags/",

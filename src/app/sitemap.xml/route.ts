@@ -5,16 +5,19 @@ const ROOT = "https://www.regexplanet.com";
 
 export async function GET() {
   const urls = [
-    `${ROOT}/`,
-    `${ROOT}/status.html`,
-    `${ROOT}/support/index.html`,
+    `/`,
+    `/status.html`,
+    `/support/index.html`,
+    `/support/javascript.html`,
   ];
 
   getEngines().forEach((engine) => {
-    urls.push(`${ROOT}/advanced/${engine.handle}/index.html`);
+    urls.push(`/advanced/${engine.handle}/index.html`);
   });
 
-  const body = urls.map((url) => `\t<url><loc>${url}</loc></url>`).join("\n");
+  const body = urls
+    .map((url) => `\t<url><loc>${ROOT}${url}</loc></url>`)
+    .join("\n");
 
   const text = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xslt" ?>

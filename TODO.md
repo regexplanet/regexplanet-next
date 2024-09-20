@@ -1,12 +1,32 @@
 # To Do
 
-- [ ] Dockerfile
-- [ ] GHA to deploy
+
 - [ ] fill in changelog
-- [ ] move redirects into next.config.mjs
-- [ ] redirect for shared regexs
-- [ ] custom page for /advanced/javascript/index.html
-- [ ] bookmarks and rss feed
+- [ ] /support/contact.html
+- [ ] /advanced/options.html: probably want to redo how these work (each service has 2-way map of specific:common)
+- [ ] EngineButton: add color for alpha/beta 
+- [ ] /support/privacy.html
+- [ ] /support/terms.html
+- [ ] card per engine on /support/index.html
+
+## Move to Regex.zone
+
+- [ ] /support/links.html: move to Regex.zone
+- [ ] /support/similar.html: have a page on Regex.zone
+- [ ] /support/engines.html: skip (or include ones that aren't enabled? or page on Regex.zone?)
+- [ ] redirects for bookmarks and rss feed
+
+
+## Share Codes
+
+- [ ] bounce to regex.zone to save
+- [ ] accept handle when returning
+- [ ] load from regex.zone if handle is passed in (querystring)
+- [ ] load from legacy if handle is old format
+- [ ] form on home page to enter it
+- [ ] if handle passed: overwrite/append/save new instead of save
+- [ ] or somehow tell if handle has update permissions
+- [ ] setup redirects for existing share codes
 
 ## Engines
 
@@ -43,3 +63,4 @@ Other lists:
 - [ ] translations
 - [ ] Fuzzing
 - [ ] Non-regex pattern matching
+- [ ] tags for each engine: features supported, calling languages, implementation language

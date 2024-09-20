@@ -1,20 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+import { EngineButton } from '@/components/EngineButton';
 import { getEngines } from '@/engines';
 
 export default function Home() {
 
   const buttons = getEngines().map((engine) => {
-    return (
-      <a className="btn  btn-outline-light border-dark m-2"
-        key={engine.handle}
-        href={`/advanced/${engine.handle}/index.html`}
-        title={engine.short_name}>
-        <img alt={engine.short_name}
-          src={engine.logo_ar21}
-          style={{"height": "6em"}}
-        />
-      </a>
-    );
+    return ( <EngineButton key={engine.handle} engine={engine} />);
   });
 
   return (

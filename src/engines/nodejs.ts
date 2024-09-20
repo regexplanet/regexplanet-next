@@ -7,6 +7,7 @@ export const nodejs: RegexEngine = {
   help_url:
     "https://developer.mozilla.org/en/JavaScript/Guide/Regular_Expressions",
   handle: "nodejs",
+  javascript: true,
   level: "golden",
   links: {
     "MDN RegExp Object":

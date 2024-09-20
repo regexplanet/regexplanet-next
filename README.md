@@ -1,5 +1,7 @@
 # RegexPlanet [<img alt="RegexPlanet logo" src="public/favicon.svg" height="90" align="right" />](https://www.regexplanet.com/)
 
+[![deploy](https://github.com/regexplanet/regexplanet-next/actions/workflows/gcr-deploy.yaml/badge.svg)](https://github.com/regexplanet/regexplanet-next/actions/workflows/gcr-deploy.yaml)
+
 ## Running locally
 
 ```

@@ -6,6 +6,7 @@ type RegexEngine = {
   help_label: string;
   help_url: string;
   handle: string;
+  javascript?: boolean;
   level: "alpha" | "beta" | "golden";
   links: Record<string, string>;
   logo_icon: string;
