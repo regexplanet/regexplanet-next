@@ -6,17 +6,15 @@ export const nodejs: RegexEngine = {
   help_label: "MDN",
   help_url:
     "https://developer.mozilla.org/en/JavaScript/Guide/Regular_Expressions",
-  handle: "javascript",
+  handle: "nodejs",
   level: "golden",
   links: {
     "MDN RegExp Object":
       "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp",
     w3schools: "http://www.w3schools.com/jsref/jsref_obj_regexp.asp",
   },
-  logo_horizontal:
-    "https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg",
-  logo_icon: "https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg",
+  logo_icon: "https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg",
   nodeping_url:
     "https://nodeping.com/reports/checks/9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
   options: {

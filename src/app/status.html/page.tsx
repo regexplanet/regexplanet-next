@@ -15,6 +15,9 @@ function getHost(test_url: string) {
     if (urlObj.host.endsWith(".appspot.com")) {
         return <Link href="https://code.google.com/appengine/">AppEngine</Link>;
     }
+    if (urlObj.host.endsWith(".herokuapp.com")) {
+        return <Link href="https://www.heroku.com/">Heroku</Link>;
+    }
     return <>
         {urlObj.host}
     </>
@@ -168,7 +171,7 @@ export default function Page() {
                         <tr key={engine.handle}>
                             <td>
                                 <img className="pe-2" src={engine.logo_icon} alt={engine.short_name} style={{"height": "1.25em"}} />
-                                <Link href={`${engine.handle}/index.html`} >{engine.short_name}</Link>
+                                <Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
                             </td>
                             {EngineStatusColumns(results[index])}
                             <td>{getHost(engine.test_url)}</td>

@@ -7,11 +7,11 @@ export const php: RegexEngine = {
   help_url: "http://www.php.net/manual/en/book.pcre.php",
   handle: "php",
   level: "alpha",
-  links: {
-  },
+  links: {},
   logo_icon: "https://www.vectorlogo.zone/logos/php/php-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/php/php-ar21.svg",
-  nodeping_url: "https://nodeping.com/reports/checks/php",
+  nodeping_url:
+    "https://nodeping.com/reports/checks/tv5izwkj-w7m2-4epk-8l9i-2z8y36h0o1n1",
   options: {
     // see http://www.php.net/manual/en/reference.pcre.pattern.modifiers.php
     ignorecase: "i - Case insensitive (PCRE_CASELESS)",

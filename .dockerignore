@@ -1,0 +1,14 @@
+Dockerfile
+.dockerignore
+.DS_Store
+.git
+.github
+.gitignore
+LICENSE.txt
+*.log
+*.md
+.next
+node_modules
+
+*.pem
+*.sh

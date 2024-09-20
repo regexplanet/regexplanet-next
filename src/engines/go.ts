@@ -16,7 +16,7 @@ export const go: RegexEngine = {
     "posix": "POSIX ERE (egrep) syntax and leftmost-longest match semantics"
   },
   short_name: "Go",
-  source_url: "https://github.com/regexplanet/regexplanet-go",
+  source_url: "https://github.com/regexplanet/regexplanet-golang",
   status_url: "https://regexplanet-go.appspot.com/status.json",
   test_url: "https://regexplanet-go.appspot.com/test.json",
 };

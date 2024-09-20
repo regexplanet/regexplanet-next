@@ -4,6 +4,7 @@ import { java } from "./java";
 import { nodejs } from "./nodejs";
 import { perl } from "./perl";
 import { php } from "./php";
+import { postgresql } from "./postgresql";
 import { python } from "./python";
 import { ruby } from "./ruby";
 import { rust } from "./rust";
@@ -16,6 +17,7 @@ const engineMap = new Map<string, RegexEngine>([
   [nodejs.handle, nodejs],
   [perl.handle, perl],
   [php.handle, php],
+  [postgresql.handle, postgresql],
   [python.handle, python],
   [ruby.handle, ruby],
   [rust.handle, rust],

@@ -10,7 +10,8 @@ export const python: RegexEngine = {
   links: {},
   logo_icon: "https://www.vectorlogo.zone/logos/python/python-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/python/python-ar21.svg",
-  nodeping_url: "https://nodeping.com/reports/checks/LATER",
+  nodeping_url:
+    "https://nodeping.com/reports/checks/15fanuwl-znir-46nz-8542-fzsk4fg3zrvg",
   options: {
     ignorecase: "IGNORECASE",
     locale: "LOCALE",

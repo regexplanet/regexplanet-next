@@ -14,7 +14,7 @@ export const tcl: RegexEngine = {
   nodeping_url:
     "https://nodeping.com/reports/checks/kk4u50sh-kave-4wwx-8f2i-74tgnum8szwa",
   options: {},
-  short_name: "TCL",
+  short_name: "Tcl",
   source_url: "https://github.com/regexplanet/regexplanet-tcl",
   status_url: "https://tcl.gcr.regexplanet.com/status.tcl",
   test_url: "https://tcl.gcr.regexplanet.com/test.tcl",
