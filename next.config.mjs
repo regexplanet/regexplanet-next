@@ -13,6 +13,7 @@ const nextConfig = {
         destination: '/',
         permanent: false,
       },
+      /*
       {
         source: '/advanced/javascript/',
         destination: '/support/javascript.html',
@@ -23,6 +24,7 @@ const nextConfig = {
         destination: '/support/javascript.html',
         permanent: false,
       },
+      */
       {
         source: '/support/',
         destination: '/support/index.html',

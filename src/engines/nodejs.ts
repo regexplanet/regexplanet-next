@@ -7,7 +7,6 @@ export const nodejs: RegexEngine = {
   help_url:
     "https://developer.mozilla.org/en/JavaScript/Guide/Regular_Expressions",
   handle: "nodejs",
-  javascript: true,
   level: "golden",
   links: {
     "MDN RegExp Object":
@@ -18,6 +17,7 @@ export const nodejs: RegexEngine = {
   logo_icon: "https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg",
   nodeping_url:
     "https://nodeping.com/reports/checks/9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
+  notfound: ["javascript", "typescript"],
   options: {
     multiline:
       "^ and $ so they match at the beginning and end, respectively, of any line, and not just the beginning and end of the entire string (m)",

@@ -1,9 +1,13 @@
 import React from 'react';
-import { getEngineOrThrow } from '@/engines';
+import { getEngine } from '@/engines';
 import { ShareLinks } from '@/components/ShareLinks';
+import { notFound } from 'next/navigation';
 
 export default function Page({ params }: { params: { engine: string } }) {
-    const engine = getEngineOrThrow(params.engine);
+    const engine = getEngine(params.engine);
+    if (!engine) {
+        return notFound();
+    }
 
     let flash = <></>;
     if (engine.level === 'alpha') {

@@ -11,7 +11,6 @@ export async function GET() {
     `/status.html`,
     `/support/contact.html`,
     `/support/index.html`,
-    `/support/javascript.html`,
   ];
 
   getEngines().forEach((engine) => {

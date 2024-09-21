@@ -6,7 +6,6 @@ export const xregexp: RegexEngine = {
   help_label: "XRegExp Syntax",
   help_url: "",
   handle: "xregexp",
-  javascript: true,
   level: "golden",
   links: {
     "XRegExp option flags": "http://xregexp.com/flags/",
@@ -18,6 +17,7 @@ export const xregexp: RegexEngine = {
   logo_ar21: "https://www.vectorlogo.zone/logos/xregexp/xregexp-ar21.svg",
   nodeping_url:
     "https://nodeping.com/reports/checks/7ysrbqyo-38sg-44au-8j78-g6fpipl8sxho",
+  notfound: ["javascript", "typescript"],
   options: {
     ignorecase: "Case-insensitive matching (i)",
     multiline:

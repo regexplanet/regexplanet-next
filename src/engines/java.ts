@@ -13,6 +13,7 @@ export const java: RegexEngine = {
   logo_ar21: "https://www.vectorlogo.zone/logos/java/java-ar21.svg",
   nodeping_url:
     "https://nodeping.com/reports/checks/m84cfhq9-gk43-44r5-8mih-syzu6vp45tuk",
+  notfound: [ "kotlin" ],
   options: {
     comment: "Ignore whitespace in the regular expression (EXTENDED)",
     ignorecase: "Case insensitive matching (IGNORECASE)",
