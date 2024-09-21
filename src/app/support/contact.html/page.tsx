@@ -1,8 +1,15 @@
 'use client'
 
 import { usePathname, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 export default function Page() {
+    <Suspense>
+        <SuspendablePage />
+    </Suspense>
+}
+
+function SuspendablePage() {
     const pathname = usePathname()
     const searchParams = useSearchParams()
 
