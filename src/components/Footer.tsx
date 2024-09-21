@@ -6,7 +6,6 @@ const links = [
     { link: '/support/contact.html', label: 'Contact' },
     { link: '/legal/privacy.html', label: 'Privacy Policy' },
     { link: '/legal/terms.html', label: 'Terms of Service' },
-    //LATER: privacy, terms, etc
 ];
 
 export function Footer() {
@@ -17,7 +16,7 @@ export function Footer() {
             {link.label}
         </Link>);
         if (index < links.length - 1) {
-            initial.push(<span className="mx-1" key="key{{index}}">|</span>);
+            initial.push(<span className="mx-1" key={`key${index}`}>|</span>);
         }
     }
     );
