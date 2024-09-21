@@ -5,6 +5,7 @@ import React, { useCallback } from 'react';
 import { getEngines } from '@/engines';
 import Link from 'next/link';
 import fetchJsonp from 'fetch-jsonp';
+import { EngineStatus } from '@/types/EngineStatus';
 
 
 function getHost(test_url: string) {
@@ -21,13 +22,6 @@ function getHost(test_url: string) {
     return <>
         {urlObj.host}
     </>
-}
-
-type EngineStatus = {
-    success: boolean;
-    version?: string;
-    time_millis?: number;
-    err?: Error;
 }
 
 const SLOW_TIME_MILLIS = 10 * 1000;

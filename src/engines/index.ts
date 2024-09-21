@@ -1,3 +1,4 @@
+import { TestOutput } from "@/types/TestOutput";
 import type { RegexEngine } from "./RegexEngine";
 import { go } from "./go";
 import { java } from "./java";
@@ -49,4 +50,26 @@ function getEngines(): Array<RegexEngine> {
   return Array.from(engineMap.values());
 }
 
-export { getEngines, getEngine, getEngineOrThrow };
+async function runTest(
+  engine: RegexEngine,
+  testInput: FormData
+): Promise<TestOutput> {
+  // this is a bogus 'as', but next build insists on it
+  const postData = new URLSearchParams(
+    testInput as unknown as Record<string, string>
+  );
+
+  const response = await fetch(engine.test_url, {
+    method: "POST",
+    body: postData,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+  const data = await response.json();
+
+  return data as TestOutput;
+}
+
+
+export { getEngines, getEngine, getEngineOrThrow, runTest };
