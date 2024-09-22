@@ -1,11 +1,7 @@
 # To Do
 
-
-- [ ] quotes on home page
 - [ ] [analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
-- [ ] get engine release level from remote instead of hard-coded
-- [ ] display status (and alpha/beta warning) on testing page
-- [ ] card per engine on /support/index.html
+- [ ] Options cleanup + picker widget
 
 ## Move to Regex.zone
 
@@ -13,7 +9,6 @@
 - [ ] /support/similar.html: have a page on Regex.zone
 - [ ] /support/engines.html: skip (or include ones that aren't enabled? or page on Regex.zone?)
 - [ ] redirects for bookmarks and rss feed
-
 
 ## Share Codes
 
@@ -57,9 +52,11 @@ Other lists:
 
 ## Future
 
+- [ ] toggle to multiline inputs
 - [ ] /advanced/options.html: probably want to redo how these work (each service has 2-way map of specific:common)
 - [ ] [colorizer](https://github.com/slevithan/regex-colorizer)
 - [ ] translations
 - [ ] Fuzzing
 - [ ] Non-regex pattern matching
 - [ ] tags for each engine: features supported, calling languages, implementation language
+- [ ] get engine release level (and everything else?) from remote instead of hard-coded

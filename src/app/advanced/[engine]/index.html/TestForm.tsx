@@ -20,7 +20,7 @@ export default function TestForm({ engine }: props) {
     const inputRows = inputs.map((input, index) => (
         <div className="mb-2" key={`key${index}`}>
             {index <= 0 ? <label htmlFor={`row${index}`} className="col-sm-2 col-form-label">Inputs</label> : <></> }
-            <input type="text" className="form-control" id={`input${index}`} name="input" value={input} />
+            <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
         </div>
     ));
 
