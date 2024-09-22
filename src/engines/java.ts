@@ -5,7 +5,7 @@ export const java: RegexEngine = {
   enabled: true,
   help_label: "JavaDoc",
   help_url:
-    "https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#sum",
+    "https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/regex/Pattern.html",
   handle: "java",
   level: "golden",
   links: {},
@@ -41,6 +41,12 @@ export const java: RegexEngine = {
       code: "UNICODE_CASE",
       value: 64,
       description: " Enables Unicode-aware case folding.",
+    },
+    {
+      code: "UNICODE_CHARACTER_CLASS",
+      value: 256,
+      description:
+        "Enables the Unicode version of Predefined character classes and POSIX character classes.",
     },
     { code: "UNIX_LINES", value: 1, description: "Enables Unix lines mode." },
   ],
