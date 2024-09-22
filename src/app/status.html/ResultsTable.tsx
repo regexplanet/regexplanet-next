@@ -41,7 +41,7 @@ function EngineStatusColumns(status: EngineStatus | undefined) {
             <>
                 <td><img src="/images/cross-circle.png" alt="down" /> Down</td>
                 <td />
-                <td />
+                <td className="d-none d-lg-table-cell" />
             </>
         );
     }
@@ -51,7 +51,7 @@ function EngineStatusColumns(status: EngineStatus | undefined) {
             <>
                 <td><img src="/images/exclamation-red.png" alt="error" /> Error</td>
                 <td />
-                <td />
+                <td className="d-none d-lg-table-cell"/>
             </>
         );
     }
@@ -61,21 +61,22 @@ function EngineStatusColumns(status: EngineStatus | undefined) {
             <>
                 <td><img src="/images/exclamation-red.png" alt="why no time?" /> No time?!?</td>
                 <td />
-                <td />
+                <td className="d-none d-lg-table-cell" />
             </>
         );
     }
 
     const icon_url = status.time_millis < SLOW_TIME_MILLIS ? "/images/tick.png" : "/images/exclamation-frame.png";
     const text = status.time_millis < SLOW_TIME_MILLIS ? "Success" : "Slow";
+    const alt_text = status.time_millis < SLOW_TIME_MILLIS ? `Success (${status.time_millis} ms)` : `Slow (${status.time_millis} ms)`;
 
     return (
         <>
             <td>
-                <img src={icon_url} alt={text} /> {text}
+                <img src={icon_url} alt={alt_text} title={alt_text} /> {text}
             </td>
             <td>{status.version}</td>
-            <td>{status.time_millis}</td>
+            <td className="d-none d-lg-table-cell">{status.time_millis}</td>
         </>
     );
 }
@@ -147,8 +148,8 @@ export function ResultsTable() {
                         <th>Engine</th>
                         <th>Status</th>
                         <th>Version</th>
-                        <th>Time (ms)</th>
-                        <th>Hosted at</th>
+                        <th className="d-none d-lg-table-cell">Time (ms)</th>
+                        <th className="d-none d-lg-table-cell">Hosted at</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,7 +160,7 @@ export function ResultsTable() {
                                 <Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
                             </td>
                             {EngineStatusColumns(results[index])}
-                            <td>{getHost(engine.test_url)}</td>
+                            <td className="d-none d-lg-table-cell">{getHost(engine.test_url)}</td>
                         </tr>
                     ))}
                 </tbody>

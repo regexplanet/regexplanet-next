@@ -9,18 +9,20 @@ export type NavbarLinkData = {
     label: string; 
     startsWith: string
     icon: JSX.Element;
+    icon_bold: JSX.Element;
 };
 
 export function NavbarLink(link: NavbarLinkData) {
     const pathname = usePathname()
+    const isActive = pathname.startsWith(link.startsWith)
 
     return (
         <li className = "nav-item" key={link.label}>
         <Link
-            className={`mx-2 nav-link${pathname.startsWith(link.startsWith) ? ' fw-bold active' : ''}`}
+                className={`mx-2 nav-link${isActive ? ' fw-bold active' : ''}`}
             href={link.link}
         >
-                <span className="d-lg-none">{link.icon}</span>
+                <span className="d-lg-none">{isActive ? link.icon_bold : link.icon}</span>
                 <span className="d-none d-lg-inline">{link.label}</span>
         </Link>
         </li>

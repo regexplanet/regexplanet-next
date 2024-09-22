@@ -1,7 +1,10 @@
 # To Do
 
+- [ ] posting
 - [ ] [analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
+- [ ] options report (across all backends)
 - [ ] Options cleanup + picker widget
+- [ ] Support for `?testurl=` query string parameter
 
 ## Move to Regex.zone
 

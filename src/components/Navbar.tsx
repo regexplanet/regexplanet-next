@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import { NavbarLink } from "./NavbarLink";
-import { PiCloudCheckBold, PiPlayBold, PiQuestionBold } from "react-icons/pi";
+import { PiCloudCheck, PiCloudCheckBold, PiPlay, PiPlayBold, PiQuestion, PiQuestionBold } from "react-icons/pi";
 
 /* eslint-disable @next/next/no-img-element */
 
 
 const links = [
-    { link: '/', label: 'Testing', startsWith: '/advanced/', icon: <PiPlayBold /> },
+    { link: '/', label: 'Testing', startsWith: '/advanced/', icon: <PiPlay />, icon_bold: <PiPlayBold /> },
     {
-        link: '/status.html', label: 'Status', startsWith: '/status.html', icon: <PiCloudCheckBold />
+        link: '/status.html', label: 'Status', startsWith: '/status.html', icon: <PiCloudCheck />, icon_bold: <PiCloudCheckBold />
     },
     {
-        link: '/support/index.html', label: 'Support', startsWith: '/support/', icon: <PiQuestionBold />
+        link: '/support/index.html', label: 'Support', startsWith: '/support/', icon: <PiQuestion />, icon_bold: <PiQuestionBold />
     },
 ];
 
