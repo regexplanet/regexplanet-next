@@ -1,3 +1,9 @@
+type RegexOption = {
+  code: string;
+  value: string|number;
+  description: string;
+  portable?: string;
+}
 
 type RegexEngine = {
   description: string;
@@ -11,7 +17,8 @@ type RegexEngine = {
   logo_ar21: string;
   nodeping_url: string;
   notfound?: string[];
-  options: Record<string, string>;
+  options: RegexOption[];
+  option_notes?: string;
   short_name: string;
   source_url: string;
   status_url: string;

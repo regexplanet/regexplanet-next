@@ -5,23 +5,21 @@ export const ruby: RegexEngine = {
   enabled: true,
   handle: "ruby",
   help_label: "Regexp Ruby-Doc",
-  help_url: "http://www.ruby-doc.org/core-1.9.3/Regexp.html",
+  help_url: "https://ruby-doc.org/3.3.5/Regexp.html",
   level: "beta",
   links: {
-    "Programming Ruby":
-      "http://www.ruby-doc.org/docs/ProgrammingRuby/html/language.html#UJ",
+    "Programming Ruby": "http://ruby-doc.com/docs/ProgrammingRuby/#UJ",
   },
-  logo_icon:
-    "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-icon.svg",
-  logo_ar21:
-    "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-ar21.svg",
+  logo_icon: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-icon.svg",
+  logo_ar21: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-ar21.svg",
   nodeping_url:
     "https://nodeping.com/reports/checks/e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
-  options: {
-    comment: "Ignore whitespace in the regular expression (EXTENDED)",
-    ignorecase: "Case insensitive matching (IGNORECASE)",
-    dotall: "Newlines are just another character (MULTILINE)",
-  },
+  options: [
+    { code: "x", value: "x", description: "Extended: Ignore whitespace and '#' comments" },
+    { code: "i", value: "i", description: "Case-insensitive" },
+    { code: "m", value: "m", description: "Multiline: Newlines are just another character" },
+    { code: "o", value: "o", description: "Interpolation mode" },
+  ],
   short_name: "Ruby",
   source_url: "https://github.com/regexplanet/regexplanet-ruby",
   status_url: "https://ruby.gcr.regexplanet.com/status.json",

@@ -32,14 +32,19 @@ export default function Page({ params }: { params: { engine: string } }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(engine.options).map((option) => (
-                        <tr key={option[0]}>
-                            <td>{option[0]}</td>
-                            <td>{option[1]}</td>
+                    {engine.options.map((option) => (
+                        <tr key={option.code}>
+                            <td>{option.code}</td>
+                            <td>{option.description}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            {engine.option_notes ? (
+                <div dangerouslySetInnerHTML={{ __html: engine.option_notes }} />
+            ) : (
+                <></>
+            )}
         </>
     )
 }
