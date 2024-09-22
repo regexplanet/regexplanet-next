@@ -1,11 +1,5 @@
-import React, { useState } from 'react';
-import { getEngine, runTest } from '@/engines';
-import { ShareLinks } from '@/components/ShareLinks';
+import { getEngine } from '@/engines';
 import { notFound } from 'next/navigation';
-import { TestInput } from '@/types/TestInput';
-import { TestOutput } from '@/types/TestOutput';
-import { TestResults } from '@/components/TestResults';
-import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: { engine: string } }) {
     const engine = getEngine(params.engine);

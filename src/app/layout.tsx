@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import type { Viewport } from 'next'
 
