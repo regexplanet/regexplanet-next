@@ -26,6 +26,11 @@ const nextConfig = {
       },
       */
       {
+        source: '/simple/previous.html',
+        destination: '/advanced/java/index.html',
+        permanent: false,
+      },
+      {
         source: '/support/',
         destination: '/support/index.html',
         permanent: false,

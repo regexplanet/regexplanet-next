@@ -6,7 +6,12 @@ import { getEngines } from '@/engines';
 import Link from 'next/link';
 import fetchJsonp from 'fetch-jsonp';
 import { EngineStatus } from '@/types/EngineStatus';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: "Backend status - RegexPlanet",
+    description: `Status of RegexPlanet's backend services`,
+}; 
 
 function getHost(test_url: string) {
     const urlObj = new URL(test_url);

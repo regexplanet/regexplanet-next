@@ -15,6 +15,7 @@ export async function GET() {
 
   getEngines().forEach((engine) => {
     urls.push(`/advanced/${engine.handle}/index.html`);
+    urls.push(`/advanced/${engine.handle}/options.html`);
   });
 
   const body = urls

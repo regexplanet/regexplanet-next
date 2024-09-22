@@ -1,3 +1,9 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Terms of Service - RegexPlanet",
+};
+
 export default function Page() {
 
     return (

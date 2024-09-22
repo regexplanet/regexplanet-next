@@ -1,7 +1,7 @@
 # To Do
 
 
-
+- [ ] quotes on home page
 - [ ] [analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
 - [ ] get engine release level from remote instead of hard-coded
 - [ ] display status (and alpha/beta warning) on testing page

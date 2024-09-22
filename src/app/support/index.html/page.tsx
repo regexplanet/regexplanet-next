@@ -1,8 +1,14 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
 
+import { Metadata } from 'next';
 import React from 'react';
 import { getEngines } from '@/engines';
+
+export const metadata: Metadata = {
+    title: "Documentation - RegexPlanet",
+    description: `Links to the official documentation for regular expressions in ${getEngines().map(x => x.short_name).join(', ')}.`,
+}; 
 
 export default function Page() {
 

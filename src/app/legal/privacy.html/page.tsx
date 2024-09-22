@@ -1,3 +1,9 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Privacy Policy - RegexPlanet",
+};
+
 export default function Page() {
     return (
         <>

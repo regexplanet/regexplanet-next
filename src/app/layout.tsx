@@ -6,11 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './global.css'
 import { Footer } from "@/components/Footer";
 
-export const metadata: Metadata = {
-  title: "RegexPlanet",
-  description: "LATER",
-};
-
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
