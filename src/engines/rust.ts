@@ -7,7 +7,12 @@ export const rust: RegexEngine = {
   help_url: "https://docs.rs/regex/latest/regex/",
   handle: "rust",
   level: "alpha",
-  links: {},
+  links: {
+    "Struct regex::Regex":
+      "https://docs.rs/regex/latest/regex/struct.Regex.html",
+    "Struct regex::RegexBuilder":
+      "https://docs.rs/regex/latest/regex/struct.RegexBuilder.html",
+  },
   logo_icon: "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-ar21.svg",
   nodeping_url:

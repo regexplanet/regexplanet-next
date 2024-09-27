@@ -1,17 +1,17 @@
 'use client'
 import React, { useState } from 'react';
-import { PiArrowSquareOut } from "react-icons/pi";
 import { runTest } from '@/engines';
 import { TestInput } from '@/types/TestInput';
 import { TestOutput } from '@/types/TestOutput';
 import { TestResults } from '@/components/TestResults';
 import { RegexEngine } from '@/engines/RegexEngine';
+import OptionsInput from './OptionsInput';
 
-type props = {
+type TestFormProps = {
     engine: RegexEngine;
 }
 
-export default function TestForm({ engine }: props) {
+export default function TestForm({ engine }: TestFormProps) {
     const [testOutput, setTestOutput] = useState<TestOutput | null>();
     const [testInput, setTestInput] = useState<TestInput | null>();
 
@@ -31,7 +31,7 @@ export default function TestForm({ engine }: props) {
         const localInput: TestInput = {
             regex: formData.get('regex') as string,
             replacement: formData.get('replacement') as string,
-            options: formData.get('options') as string,
+            option: formData.getAll('option') as string[],
             inputs: formData.getAll('input') as string[]
         };
         console.log(localInput);
@@ -58,17 +58,7 @@ export default function TestForm({ engine }: props) {
                     <label htmlFor="replacement" className="form-label">Replacement</label>
                     <input type="text" className="form-control" id="replacement" name="replacement" />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="options" className="form-label">Options</label>
-                    <div className="row">
-                        <div className="col-7 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                            <input type="text" className="form-control" id="options" name="options" />
-                        </div>
-                        <div className="col-5 col-sm-6 col-md-8 col-lg-9 col-xl-10">
-                            <a href="options.html" target="_new">Help<PiArrowSquareOut className="ms-2" /></a>
-                        </div>
-                    </div>
-                </div>
+                { engine.options.length > 0 ? <OptionsInput engine={engine} options={[]} /> : <></> }
                 <button type="submit" className="btn btn-primary">Test</button>
                 {inputRows}
                 <button type="submit" className="btn btn-primary">Test</button>

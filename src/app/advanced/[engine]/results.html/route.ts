@@ -32,7 +32,7 @@ export async function GET(
   const testInput = {
     regex: "test",
     replacement: "test",
-    options: "get",
+    option: [],
     inputs: ["test"],
   };
 
@@ -71,7 +71,7 @@ export async function POST(
   const testInput = {
     regex: (rawData.get("regex") || "") as string,
     replacement: (rawData.get("replacement") || "") as string,
-    options: (rawData.get("options") || "") as string,
+    option: (rawData.getAll("options") || "") as string[],
     inputs: (rawData.getAll("input") || []) as string[],
   };
 

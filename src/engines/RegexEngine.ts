@@ -1,13 +1,26 @@
-type RegexOption = {
+
+type PortableCodes = "ignorecase" | "multiline" | "comments" | "dotall";
+
+export type RegexOption = {
   code: string;
-  value: string | number;
+  legacyCode?: string;    // for the original RegexPlanet backends
+  portableCode?: PortableCodes;  // for translating this code when switching to other engines
+  numericCode?: number;    // the value for engines that use a numeric bitmask for options
   description: string;
-  portable?: string;
+};
+
+export type RegexExtraInput = {
+  name: string; // name of the form field (used in the POST request)
+  prompt: string; // text to display to the user
+  element: JSX.Element; // the input element to display to gather the input
+  help: string; // text to display to the user to help them fill out the form
+  defaultValue: string; // the default value to use if the user doesn't provide one
 };
 
 type RegexEngine = {
   description: string; // library or module name (do not include `short_name`)
   enabled: boolean; // always true for now
+  extra_inputs?: RegexExtraInput[]; // A list of extra inputs to gather from the user
   help_label: string; // text for the help button on the testing page
   help_url: string; // URL destination for the help button on the testing page
   handle: string; // unique identifier for the language or engine used as the slug in URLs

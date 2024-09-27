@@ -15,9 +15,7 @@ export const go: RegexEngine = {
   options: [
     {
       code: "posix",
-      description:
-        "POSIX ERE (egrep) syntax and leftmost-longest match semantics",
-      value: "posix",
+      description: "Use `CompilePOSIX` instead of `Compile`",
     },
   ],
   option_notes: `The <code>posix</code> option is really a separate API call (<code>CompilePOSIX</code>).  Other option need to be specified in the regex pattern.`,

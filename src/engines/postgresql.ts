@@ -17,49 +17,41 @@ export const postgresql: RegexEngine = {
   nodeping_url:
     "https://nodeping.com/reports/checks/43ytdj0n-jeiu-4zta-8ptc-wr7xmxztp5i8",
   options: [
-    { code: "b", value: "b", description: "rest of RE is a BRE" },
+    { code: "b", description: "rest of RE is a BRE" },
     {
       code: "c",
-      value: "c",
       description: "case-sensitive matching (overrides operator type)",
     },
-    { code: "e", value: "", description: "rest of RE is an ERE" },
+    { code: "e", description: "rest of RE is an ERE" },
     {
       code: "i",
-      value: "i",
-      description:
-        "case-insensitive matching (overrides operator type)",
+      portableCode: "ignorecase",
+      description: "case-insensitive matching (overrides operator type)",
     },
-    { code: "m", value: "m", description: "historical synonym for n" },
+    { code: "m", description: "historical synonym for n" },
     {
       code: "n",
-      value: "n",
       description: "newline-sensitive matching",
     },
     {
       code: "p",
-      value: "p",
       description: "partial newline-sensitive matching",
     },
     {
       code: "q",
-      value: "q",
       description:
         "rest of RE is a literal (“quoted”) string, all ordinary characters",
     },
     {
       code: "s",
-      value: "s",
       description: "non-newline-sensitive matching (default)",
     },
-    { code: "t", value: "t", description: "tight syntax" },
+    { code: "t", description: "tight syntax" },
     {
       code: "w",
-      value: "w",
-      description:
-        "inverse partial newline-sensitive (“weird”) matching",
+      description: "inverse partial newline-sensitive (“weird”) matching",
     },
-    { code: "x", value: "x", description: "expanded syntax" },
+    { code: "x", description: "expanded syntax" },
   ],
   short_name: "PostgreSQL",
   source_url: "https://github.com/regexplanet/regexplanet-postgresql",

@@ -21,44 +21,41 @@ export const nodejs: RegexEngine = {
     "https://nodeping.com/reports/checks/9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
   notfound: ["javascript", "typescript"],
   options: [
-    {
+    /*{
       code: "d",
-      value: "d",
       description: "Generate indices for substring matches. (hasIndices)",
-    },
-    { code: "g", value: "g", description: "Global search. (global)" },
+    },*/
+    { code: "g", 
+      legacyCode: "global",
+      description: "Global search. (global)" },
     {
       code: "i",
-      value: "i",
+      legacyCode: "ignorecase",
       description: "Case-insensitive search. (ignoreCase)",
     },
     {
       code: "m",
-      value: "m",
+      legacyCode: "multiline",
       description:
         "Allows ^ and $ to match next to newline characters. (multiline)",
     },
-    {
+    /*{
       code: "s",
-      value: "s",
       description: "Allows . to match newline characters. (dotAll)",
     },
     {
       code: "u",
-      value: "u",
       description: `"Unicode"; treat a pattern as a sequence of Unicode code points. (unicode)`,
     },
     {
       code: "v",
-      value: "v",
       description:
         "An upgrade to the u mode with more Unicode features. (unicodeSets)",
     },
     {
       code: "y",
-      value: "y",
       description: `Perform a "sticky" search that matches starting at the current position in the target string. (sticky)`,
-    },
+    },*/
   ],
   short_name: "Node.js",
   source_url: "https://github.com/regexplanet/regexplanet-js",
