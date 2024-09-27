@@ -25,13 +25,55 @@ export default function Home() {
           Pick which programming language you are using:
         </div>
       </div>
-      <div className="row">
+      <div className="row mt-3">
         <div className="col d-flex flex-wrap justify-content-center">
           {buttons}
         </div>
       </div>
-      <h2 className="mt-3">One last thing</h2>
 
+      <hr />
+
+      <div className="d-flex justify-content-center align-items-start">
+        <div className="card m-3 d-inline-block" style={{ "width": "18rem" }}>
+          <h5 className="card-header border-bottom p-3 bg-body-tertiary">Sharing</h5>
+          <div className="card-body pt-1">
+            Share codes are an easy way to share regexes.  If you have a share code, enter it here:
+            <div className="pt-2 d-flex justify-content-center">
+              <form action="/share/index.html" className="form-inline" method="post">
+                <div className="input-group">
+                  <input type="text" className="form-control" name="share" placeholder="Share code" />
+                  <button type="submit" className="btn btn-primary">Go</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div className="card m-3 d-inline-block" style={{ "width": "18rem" }}>
+          <h5 className="card-header xborder-bottom p-3 bg-body-tertiary">Status</h5>
+          <div className="card-body pt-1">
+            A badly formed regular expression can run forever, making it very useful for denial of services attacks.  Some of the engines/hosts are susceptible to these.
+            <div className="pt-2 d-flex justify-content-center">
+              <a className="btn btn-outline-secondary" href="/status.html" rel="nofollow">Engine Status</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="card m-3 d-inline-block" style={{ "width": "18rem" }}>
+          <h5 className="card-header xborder-bottom p-3 bg-body-tertiary">Regex Zone</h5>
+          <div className="card-body pt-1">
+            The <a href="https://www.regex.zone/">Regex Zone</a> is a place to share regular expressions, and learn from others.  It is a community of regex enthusiasts.
+            <div className="pt-2 d-flex justify-content-center">
+              <a className="btn btn-primary" href="https://www.regex.zone/" rel="nofollow">Visit the Regex Zone</a>
+            </div>
+          </div>
+        </div>
+
+    </div >
+
+      <hr />
+
+      <h2 className="mt-3">One last thing</h2>
       <div className="card my-3 bg-light">
         <div className="card-body">
           Some people, when confronted with a problem, think &ldquo;I know, I’ll use regular expressions.&rdquo; Now they have two problems.<br />

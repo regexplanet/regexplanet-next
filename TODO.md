@@ -3,7 +3,6 @@
 - [ ] posting
 - [ ] [analytics](https://nextjs.org/docs/app/building-your-application/optimizing/analytics)
 - [ ] options report (across all backends)
-- [ ] Options cleanup + picker widget
 - [ ] Support for `?testurl=` query string parameter
 
 ## Move to Regex.zone
@@ -36,12 +35,14 @@
 - [ ] [Elm](https://package.elm-lang.org/packages/elm/regex/latest/)
 - [ ] Julia
 - [ ] Haskell (done, but hosting isn't working)
+- [ ] AWK
 - [ ] D
 - [ ] GNU grep
 - [ ] [Zig](https://github.com/tiehuis/zig-regex)
 - [ ] direct to engines: PCRE, RE2, [ICU](https://unicode-org.github.io/icu/userguide/strings/regexp.html), [hyperscan](https://github.com/intel/hyperscan)/[vectorscan](https://github.com/VectorCamp/vectorscan), Yarr...  
 - [ ] [Janet](https://janet-lang.org/) ~lisp
 - [ ] [marianobarrios/dregex](https://github.com/marianobarrios/dregex) - Java alternative
+- [ ] Mozilla's [list of JavaScript implementations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_overview#javascript_implementations), each of which should support Regex.
 
 Patterns that are not regular expressions:
 - [ ] [wildcards](https://crates.io/crates/wildcard) - lots of flavors
