@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { redirect, useParams } from 'next/navigation' 
 import { EngineButton } from '@/components/EngineButton';
 import { RegexEngine } from '@/engines/RegexEngine';
-import { getEngines } from '@/engines';
+import { getWorkingEngines } from '@/engines';
 
 const niceNames = new Map<string, string>([
   ["javascript", "JavaScript"],
@@ -68,7 +68,7 @@ export default function NotFound() {
     return redirect(`/advanced/${handle.toLowerCase()}/index.html`);
   }
 
-  const engines = getEngines().filter(engine => engine.notfound && engine.notfound.includes(handle));
+  const engines = getWorkingEngines().filter(engine => engine.notfound && engine.notfound.includes(handle));
 
   if (engines.length == 1) {
     return redirect(`/advanced/${engines[0].handle}/index.html`);

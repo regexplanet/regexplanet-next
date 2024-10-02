@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { EngineButton } from '@/components/EngineButton';
-import { getEngines } from '@/engines';
+import { getWorkingEngines } from '@/engines';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "RegexPlanet",
-  description: `Regular expression (regex/regexp) testing and debugging for ${getEngines().map(x => x.short_name).join(', ')}.`,
+  description: `Regular expression (regex/regexp) testing and debugging for ${getWorkingEngines().map(x => x.short_name).join(', ')}.`,
 };
 
 export default function Home() {
 
-  const buttons = getEngines().map((engine) => {
+  const buttons = getWorkingEngines().map((engine) => {
     return (<EngineButton key={engine.handle} engine={engine} />);
   });
 

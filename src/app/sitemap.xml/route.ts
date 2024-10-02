@@ -1,5 +1,5 @@
 
-import { getEngines } from "@/engines";
+import { getWorkingEngines } from "@/engines";
 
 const ROOT = "https://www.regexplanet.com";
 
@@ -13,7 +13,7 @@ export async function GET() {
     `/support/index.html`,
   ];
 
-  getEngines().forEach((engine) => {
+  getWorkingEngines().forEach((engine) => {
     urls.push(`/advanced/${engine.handle}/index.html`);
     urls.push(`/advanced/${engine.handle}/options.html`);
   });

@@ -15,6 +15,7 @@ export default function Page() {
         <>
             <h1>Official Documentation Links</h1>
             <hr />
+            <div className="alert alert-info">You can find patterns and other resources at the <a className="alert-link" href="https://www.regex.zone/">Regex Zone</a>!</div>
             {getEngines().map((engine, index) => (
                 <div className="card m-3 d-inline-block" key={`key${index}`} style={{ "width": "18rem" }}>
                     <div className="card-header bg-body-tertiary d-flex align-items-center">

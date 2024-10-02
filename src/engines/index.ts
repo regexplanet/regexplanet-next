@@ -1,7 +1,12 @@
 import { TestOutput } from "@/types/TestOutput";
 import type { RegexEngine } from "./RegexEngine";
+
+import { dotnet } from "./dotnet";
+import { erlang } from "./erlang";
 import { go } from "./go";
+import { haskell } from "./haskell";
 import { java } from "./java";
+import { mysql } from "./mysql";
 import { nodejs } from "./nodejs";
 import { perl } from "./perl";
 import { php } from "./php";
@@ -13,8 +18,12 @@ import { tcl } from "./tcl";
 import { xregexp } from "./xregexp";
 
 const engineMap = new Map<string, RegexEngine>([
+  [erlang.handle, erlang],
   [go.handle, go],
+  [haskell.handle, haskell],
   [java.handle, java],
+  [mysql.handle, mysql],
+  [dotnet.handle, dotnet],
   [nodejs.handle, nodejs],
   [perl.handle, perl],
   [php.handle, php],
@@ -38,6 +47,14 @@ class EngineNotFoundError extends Error {
   handle: string;
 }
 
+class EngineNotImplementedError extends Error {
+  constructor(handle: string) {
+    super("Engine not implemented");
+    this.handle = handle;
+  }
+  handle: string;
+}
+
 function getEngineOrThrow(handle: string): RegexEngine {
   const theEngine = engineMap.get(handle);
   if (!theEngine) {
@@ -50,10 +67,30 @@ function getEngines(): Array<RegexEngine> {
   return Array.from(engineMap.values());
 }
 
+function getWorkingEngineOrThrow(handle: string): RegexEngine {
+  const theEngine = engineMap.get(handle);
+  if (!theEngine) {
+    throw new EngineNotFoundError(handle);
+  }
+  if (!theEngine.test_url) {
+    throw new EngineNotImplementedError(handle);
+  }
+  return theEngine;
+}
+
+function getWorkingEngines(): Array<RegexEngine> {
+  return Array.from(engineMap.values()).filter((engine) => engine.test_url);
+} 
+
 async function runTest(
   engine: RegexEngine,
   testInput: FormData
 ): Promise<TestOutput> {
+
+  if (!engine.test_url) {
+    throw new EngineNotImplementedError(engine.handle);
+  }
+  
   // this is a bogus 'as', but next build insists on it
   const postData = new URLSearchParams(
     testInput as unknown as Record<string, string>
@@ -72,4 +109,11 @@ async function runTest(
 }
 
 
-export { getEngines, getEngine, getEngineOrThrow, runTest };
+export {
+  getEngines,
+  getEngine,
+  getEngineOrThrow,
+  getWorkingEngines,
+  getWorkingEngineOrThrow,
+  runTest,
+};

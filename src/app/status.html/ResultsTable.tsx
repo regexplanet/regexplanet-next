@@ -8,7 +8,10 @@ import fetchJsonp from 'fetch-jsonp';
 import { EngineStatus } from '@/types/EngineStatus';
 
 
-function getHost(test_url: string) {
+function getHost(test_url: string|undefined) {
+    if (!test_url) {
+        return <i>(not configured)</i>
+    }
     const urlObj = new URL(test_url);
     if (urlObj.host.endsWith(".gcr.regexplanet.com")) {
         return <Link href="https://cloud.google.com/run/">Cloud Run</Link>;
@@ -113,8 +116,8 @@ export function ResultsTable() {
 
     const fetchAllResults = useCallback(() => {
         console.log("Fetching all results");
-        getEngines().map((engine, index) => {
-            fetchOneResult(engine.status_url)
+        getEngines().filter((engine) => engine.status_url).map((engine, index) => {
+            fetchOneResult(engine?.status_url || "")    // hack since TS doesn't understand the filter above
                 .then((result) => {
                     console.log(`Got result for ${engine.short_name}`, result, index);
                     setState(prevResult => {
@@ -153,7 +156,7 @@ export function ResultsTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {getEngines().map((engine, index) => (
+                    {getEngines().filter(engine => engine.status_url).map((engine, index) => (
                         <tr key={engine.handle}>
                             <td>
                                 <img className="pe-2" src={engine.logo_icon} alt={engine.short_name} style={{ "height": "1.25em" }} />
