@@ -39,7 +39,7 @@ export default function Home() {
           <div className="card-body pt-1">
             Share codes are an easy way to share regexes.  If you have a share code, enter it here:
             <div className="pt-2 d-flex justify-content-center">
-              <form action="/share/index.html" className="form-inline" method="post">
+              <form action="/share/index.html" className="form-inline" method="get">
                 <div className="input-group">
                   <input type="text" className="form-control" name="share" placeholder="Share code" />
                   <button type="submit" className="btn btn-primary">Go</button>

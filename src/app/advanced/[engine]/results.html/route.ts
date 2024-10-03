@@ -30,6 +30,7 @@ export async function GET(
     }
 
   const testInput = {
+    engine: engine.handle,
     regex: "test",
     replacement: "test",
     option: [],
@@ -69,6 +70,7 @@ export async function POST(
   const rawData = await request.formData();
 
   const testInput = {
+    engine: engine.handle,
     regex: (rawData.get("regex") || "") as string,
     replacement: (rawData.get("replacement") || "") as string,
     option: (rawData.getAll("options") || "") as string[],

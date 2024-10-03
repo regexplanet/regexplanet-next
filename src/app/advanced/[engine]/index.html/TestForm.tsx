@@ -29,6 +29,7 @@ export default function TestForm({ engine }: TestFormProps) {
         const form = event.currentTarget;
         const formData = new FormData(form);
         const localInput: TestInput = {
+            engine: engine.handle,
             regex: formData.get('regex') as string,
             replacement: formData.get('replacement') as string,
             option: formData.getAll('option') as string[],

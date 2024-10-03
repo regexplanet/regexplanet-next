@@ -67,6 +67,14 @@ function getEngines(): Array<RegexEngine> {
   return Array.from(engineMap.values());
 }
 
+function getWorkingEngine(handle: string): RegexEngine | undefined {
+  const theEngine = engineMap.get(handle);
+  if (theEngine && theEngine.test_url) {
+    return theEngine;
+  }
+  return undefined;
+}
+
 function getWorkingEngineOrThrow(handle: string): RegexEngine {
   const theEngine = engineMap.get(handle);
   if (!theEngine) {
@@ -80,17 +88,16 @@ function getWorkingEngineOrThrow(handle: string): RegexEngine {
 
 function getWorkingEngines(): Array<RegexEngine> {
   return Array.from(engineMap.values()).filter((engine) => engine.test_url);
-} 
+}
 
 async function runTest(
   engine: RegexEngine,
   testInput: FormData
 ): Promise<TestOutput> {
-
   if (!engine.test_url) {
     throw new EngineNotImplementedError(engine.handle);
   }
-  
+
   // this is a bogus 'as', but next build insists on it
   const postData = new URLSearchParams(
     testInput as unknown as Record<string, string>
@@ -108,11 +115,11 @@ async function runTest(
   return data as TestOutput;
 }
 
-
 export {
-  getEngines,
   getEngine,
+  getEngines,
   getEngineOrThrow,
+  getWorkingEngine,
   getWorkingEngines,
   getWorkingEngineOrThrow,
   runTest,

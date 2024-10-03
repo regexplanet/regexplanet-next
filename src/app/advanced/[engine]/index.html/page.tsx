@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: { engine: string } 
     }
 
     return {
-        title: `Test your ${engine.short_name} regular expression - RegexPlanet`,
-        description: `Online testing for ${engine.short_name} regular expressions.`,
+        title: `${engine.short_name} regex testing - RegexPlanet`,
+        description: `Online testing for ${engine.short_name} (${engine.description}) regular expressions.`,
     }
 }
 
