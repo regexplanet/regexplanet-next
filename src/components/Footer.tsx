@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { ColorSchemeToggle } from './ColorSchemeToggle';
+
 const links = [
     { link: 'https://github.com/regexplanet/regexplanet-next?tab=readme-ov-file#credits', label: 'Credits' },
     { link: 'https://github.com/regexplanet/regexplanet-next', label: 'Source' },
@@ -24,9 +26,9 @@ export function Footer() {
     return (
         <div className="container-lg py-3">
         <hr />
-        <footer className="d-flex justify-content-center text-body-tertiary"><small>
+        <footer className="d-flex justify-content-center text-body-tertiary"><small className="me-3">
             {initial}
-        </small></footer>
+        </small> <ColorSchemeToggle /></footer>
         </div>
     )
 }
