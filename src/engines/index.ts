@@ -1,6 +1,7 @@
 import { TestOutput } from "@/types/TestOutput";
 import type { RegexEngine } from "./RegexEngine";
 
+import { bun } from "./bun";
 import { dotnet } from "./dotnet";
 import { erlang } from "./erlang";
 import { go } from "./go";
@@ -16,8 +17,10 @@ import { ruby } from "./ruby";
 import { rust } from "./rust";
 import { tcl } from "./tcl";
 import { xregexp } from "./xregexp";
+import { TestInput } from "@/types/TestInput";
 
 const engineMap = new Map<string, RegexEngine>([
+  [bun.handle, bun],
   [erlang.handle, erlang],
   [go.handle, go],
   [haskell.handle, haskell],
@@ -91,19 +94,24 @@ function getWorkingEngines(): Array<RegexEngine> {
 }
 
 async function runTest(
-  engine: RegexEngine,
-  testInput: FormData
+  testInput: TestInput
 ): Promise<TestOutput> {
-  if (!engine.test_url) {
-    throw new EngineNotImplementedError(engine.handle);
+
+  const theEngine = getEngineOrThrow(testInput.engine);
+
+  if (!theEngine.test_url) {
+    throw new EngineNotImplementedError(theEngine.handle);
   }
 
   // this is a bogus 'as', but next build insists on it
-  const postData = new URLSearchParams(
-    testInput as unknown as Record<string, string>
-  );
+  const postData = 
+    `regex=${encodeURIComponent(testInput.regex)}`
+    + `&replacement=${encodeURIComponent(testInput.replacement)}`
+    + `&${testInput.option.map((option) => `option=${option}`).join("&")}`
+    + `&${testInput.inputs.map((input) => `input=${input}`).join("&")}`
+    ;
 
-  const response = await fetch(engine.test_url, {
+  const response = await fetch(theEngine.test_url, {
     method: "POST",
     body: postData,
     headers: {
