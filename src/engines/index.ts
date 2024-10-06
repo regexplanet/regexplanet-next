@@ -15,6 +15,7 @@ import { postgresql } from "./postgresql";
 import { python } from "./python";
 import { ruby } from "./ruby";
 import { rust } from "./rust";
+import { swift } from "./swift";
 import { tcl } from "./tcl";
 import { xregexp } from "./xregexp";
 import { TestInput } from "@/types/TestInput";
@@ -34,6 +35,7 @@ const engineMap = new Map<string, RegexEngine>([
   [python.handle, python],
   [ruby.handle, ruby],
   [rust.handle, rust],
+  [swift.handle, swift],
   [tcl.handle, tcl],
   [xregexp.handle, xregexp],
 ]);

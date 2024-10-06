@@ -16,7 +16,8 @@ export const bun: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/bunsh/bunsh-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/bunsh/bunsh-ar21.svg",
-  nodeping_url: "https://nodeping.com/reports/checks/LATER",
+  nodeping_url:
+    "https://nodeping.com/reports/checks/iajucfo0-kq0e-47ql-82sk-xoji0l2ejmfw",
   notfound: ["javascript", "typescript"],
   options: [
     {
