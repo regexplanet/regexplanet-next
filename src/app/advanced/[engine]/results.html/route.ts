@@ -3,10 +3,8 @@ import { TestOutput } from "@/types/TestOutput";
 import { NextRequest } from "next/server";
 //import { renderToStaticMarkup, renderToString } from "react-dom/server";
 import { postpage } from "./postpage";
-import { getEngine, runTest } from "@/engines";
-import { notFound } from "next/navigation";
-
-
+import { getEngine } from "@/engines";
+import { notFound, redirect } from "next/navigation";
 
 async function renderPage(
   engine: string,
@@ -24,48 +22,27 @@ export async function GET(
   request: Request,
   { params }: { params: { engine: string } }
 ) {
-    const engine = getEngine(params.engine);
-    if (!engine) {
-      return notFound();
-    }
-
-  const testInput = {
-    engine: engine.handle,
-    regex: "test",
-    replacement: "test",
-    option: [],
-    inputs: ["test"],
-  };
-
-  /* 
-  const rawItem = request.url;
-  if (!rawItem) {
-    return new Response("No test input", {
-      status: 400,
-    });
+  const engine = getEngine(params.engine);
+  if (!engine) {
+    return notFound();
   }
-  const testInput = JSON.parse(rawItem) as TestInput;
-  */
-  const formData = new FormData();
-  formData.set("regex", testInput.regex);
 
-  const testOutput = runTest(engine, formData);
-
-  const html = JSON.stringify(testOutput); 
-
-  return new Response(html, {
-    status: 200,
-  });
+  redirect("/advanced/${engine.handle}/results.html");
 }
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { engine: string } }
 ) {
-    const engine = getEngine(params.engine);
-    if (!engine) {
-      return notFound();
-    }
+  const engine = getEngine(params.engine);
+  if (!engine) {
+    return notFound();
+  }
+  if (!engine.test_url) {
+    return new Response("Engine does not support testing", {
+      status: 400,
+    });
+  }
 
   const rawData = await request.formData();
 
@@ -77,14 +54,15 @@ export async function POST(
     inputs: (rawData.getAll("input") || []) as string[],
   };
 
-  const testOutput = await runTest(engine, rawData);
+  const response = await fetch(engine.test_url);//(testInput);
+  const testOutput = await response.json() as TestOutput;
 
   const html = await renderPage(engine.handle, "post", testInput, testOutput);
 
   return new Response(html, {
     status: 200,
     headers: {
-      "Content-Type": "text/html"
+      "Content-Type": "text/html",
     },
   });
 }

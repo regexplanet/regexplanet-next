@@ -1,3 +1,5 @@
+import { TestInput } from "@/types/TestInput";
+import { TestOutput } from "@/types/TestOutput";
 
 type PortableCodes = "ignorecase" | "multiline" | "comments" | "dotall";
 
@@ -38,4 +40,28 @@ type RegexEngine = {
   test_url?: string; // URL of the test endpoint
 };
 
-export { type RegexEngine };
+type TestFn = (testInput: TestInput) => Promise<TestOutput>;
+
+function generateRemoteTestFn(test_url: string): TestFn {
+  
+  return async (testInput: TestInput): Promise<TestOutput> => {
+    // this is a bogus 'as', but next build insists on it
+    const postData =
+      `regex=${encodeURIComponent(testInput.regex)}` +
+      `&replacement=${encodeURIComponent(testInput.replacement)}` +
+      `&${testInput.option.map((option) => `option=${option}`).join("&")}` +
+      `&${testInput.inputs.map((input) => `input=${input}`).join("&")}`;
+    const response = await fetch(test_url, {
+      method: "POST",
+      body: postData,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    const data = await response.json();
+
+    return data as TestOutput;
+  }
+}
+
+export { generateRemoteTestFn, type RegexEngine, type TestFn };

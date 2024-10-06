@@ -15,9 +15,24 @@ export const ruby: RegexEngine = {
   nodeping_url:
     "https://nodeping.com/reports/checks/e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
   options: [
-    { code: "x", portableCode: "comments", legacyCode: "comment", description: "Extended: Ignore whitespace and '#' comments" },
-    { code: "i", portableCode: "ignorecase", legacyCode: "ignorecase", description: "Case-insensitive" },
-    { code: "m", portableCode: "multiline", legacyCode: "multiline", description: "Multiline: Newlines are just another character" },
+    {
+      code: "x",
+      portableCode: "comments",
+      legacyCode: "comment",
+      description: "Extended: Ignore whitespace and '#' comments",
+    },
+    {
+      code: "i",
+      portableCode: "ignorecase",
+      legacyCode: "ignorecase",
+      description: "Case-insensitive",
+    },
+    {
+      code: "m",
+      portableCode: "multiline",
+      legacyCode: "multiline",
+      description: "Multiline: Newlines are just another character",
+    },
     //{ code: "o", description: "Interpolation mode" },
   ],
   short_name: "Ruby",

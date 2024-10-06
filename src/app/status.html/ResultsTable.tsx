@@ -8,11 +8,11 @@ import fetchJsonp from 'fetch-jsonp';
 import { EngineStatus } from '@/types/EngineStatus';
 
 
-function getHost(test_url: string|undefined) {
-    if (!test_url) {
+function getHost(status_url: string|undefined) {
+    if (!status_url) {
         return <i>(not configured)</i>
     }
-    const urlObj = new URL(test_url);
+    const urlObj = new URL(status_url);
     if (urlObj.host.endsWith(".gcr.regexplanet.com")) {
         return <Link href="https://cloud.google.com/run/">Cloud Run</Link>;
     }
@@ -163,7 +163,7 @@ export function ResultsTable() {
                                 <Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
                             </td>
                             {EngineStatusColumns(results[index])}
-                            <td className="d-none d-lg-table-cell">{getHost(engine.test_url)}</td>
+                            <td className="d-none d-lg-table-cell">{getHost(engine.status_url)}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -35,7 +35,12 @@ export const java: RegexEngine = {
       numericCode: 4,
       description: "Allow whitespace and comments in pattern.",
     },
-    { code: "DOTALL", legacyCode: "dotall", numericCode: 32, description: "Enables dotall mode." },
+    {
+      code: "DOTALL",
+      legacyCode: "dotall",
+      numericCode: 32,
+      description: "Enables dotall mode.",
+    },
     {
       code: "LITERAL",
       legacyCode: "literal",

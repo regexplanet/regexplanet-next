@@ -34,7 +34,12 @@ export const php: RegexEngine = {
       portableCode: "dotall",
       description: "PCRE_DOTALL",
     },
-    { code: "x", portableCode: "comments", legacyCode: "comment", description: "PCRE_EXTENDED" },
+    {
+      code: "x",
+      portableCode: "comments",
+      legacyCode: "comment",
+      description: "PCRE_EXTENDED",
+    },
     //{ code: "A", description: "PCRE_ANCHORED" },
     //{ code: "D", description: "PCRE_DOLLAR_ENDONLY" },
     //{ code: "S", description: "extra analysis during compilation" },

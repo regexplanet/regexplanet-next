@@ -1,6 +1,6 @@
-import { TestOutput } from "@/types/TestOutput";
 import type { RegexEngine } from "./RegexEngine";
 
+import { browser } from "./browser";
 import { bun } from "./bun";
 import { dotnet } from "./dotnet";
 import { erlang } from "./erlang";
@@ -18,9 +18,9 @@ import { rust } from "./rust";
 import { swift } from "./swift";
 import { tcl } from "./tcl";
 import { xregexp } from "./xregexp";
-import { TestInput } from "@/types/TestInput";
 
 const engineMap = new Map<string, RegexEngine>([
+  [browser.handle, browser],
   [bun.handle, bun],
   [erlang.handle, erlang],
   [go.handle, go],
@@ -95,35 +95,6 @@ function getWorkingEngines(): Array<RegexEngine> {
   return Array.from(engineMap.values()).filter((engine) => engine.test_url);
 }
 
-async function runTest(
-  testInput: TestInput
-): Promise<TestOutput> {
-
-  const theEngine = getEngineOrThrow(testInput.engine);
-
-  if (!theEngine.test_url) {
-    throw new EngineNotImplementedError(theEngine.handle);
-  }
-
-  // this is a bogus 'as', but next build insists on it
-  const postData = 
-    `regex=${encodeURIComponent(testInput.regex)}`
-    + `&replacement=${encodeURIComponent(testInput.replacement)}`
-    + `&${testInput.option.map((option) => `option=${option}`).join("&")}`
-    + `&${testInput.inputs.map((input) => `input=${input}`).join("&")}`
-    ;
-
-  const response = await fetch(theEngine.test_url, {
-    method: "POST",
-    body: postData,
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  });
-  const data = await response.json();
-
-  return data as TestOutput;
-}
 
 export {
   getEngine,
@@ -132,5 +103,4 @@ export {
   getWorkingEngine,
   getWorkingEngines,
   getWorkingEngineOrThrow,
-  runTest,
 };
