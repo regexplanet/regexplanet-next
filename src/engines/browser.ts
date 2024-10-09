@@ -22,9 +22,10 @@ export const browser: RegexEngine = {
   handle: "browser",
   level: "alpha",
   links: {},
-  logo_icon: "https://www.vectorlogo.zone/logos/firefox/firefox-icon.svg",    // LATER: dynamic
-  logo_ar21: "https://www.vectorlogo.zone/logos/firefox/firefox-ar21.svg",    // LATER: dynamic
+  logo_icon: "/images/browsers/browser-icon.svg",
+  logo_ar21: "/images/browsers/browser-ar21.svg",
   nodeping_url: undefined,
+  notfound: ["javascript", "typescript"],
   options: [
     {
       code: "d",
@@ -63,7 +64,7 @@ export const browser: RegexEngine = {
   short_name: "Your Browser",
   source_url: "https://github.com/regexplanet/regexplanet-next",
   status_url: undefined,
-  //test_url: "javascript:browserTest",
+  test_url: "javascript:",
 };
 
 

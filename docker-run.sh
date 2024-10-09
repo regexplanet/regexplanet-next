@@ -15,7 +15,10 @@ docker build \
 #exit 0
 
 docker run \
-	--env PORT='4000' \
+	--env PORT=4000 \
 	--expose 4000 \
+	--interactive \
 	--publish 4000:4000 \
+	--rm \
+	--tty \
 	regexplanet-next

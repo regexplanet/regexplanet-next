@@ -22,4 +22,6 @@ export const dotnet: RegexEngine = {
   logo_ar21: "https://www.vectorlogo.zone/logos/dotnet/dotnet-ar21.svg",
   options: [],
   short_name: ".NET",
+  status_url: "https://dotnet.gcr.regexplanet.com/status.json",
+  test_url: "https://dotnet.gcr.regexplanet.com/test.json",
 };

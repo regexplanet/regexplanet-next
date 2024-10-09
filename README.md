@@ -29,4 +29,6 @@
 [![react.js](https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg)](https://reactjs.org/ "UI Framework")
 [![TypeScript](https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg)](https://www.typescriptlang.org/ "Programming Language")
 [![SimpleShare.dev](https://www.vectorlogo.zone/logos/simplesharedev/simplesharedev-ar21.svg)](http://simpleshare.dev/ "Privacy-friendly sharing links")
+[![svgrepo](https://www.vectorlogo.zone/logos/svgrepo/svgrepo-ar21.svg)](https://www.svgrepo.com/svg/249535/browser-accept "browser icon (modified)")
 [![VectorLogoZone](https://www.vectorlogo.zone/logos/vectorlogozone/vectorlogozone-ar21.svg)](https://www.vectorlogo.zone/ "Logos")
+

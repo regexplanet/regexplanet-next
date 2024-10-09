@@ -38,7 +38,7 @@ export default function TestForm(props: TestFormProps) {
     const [testInput, setTestInput] = useState<TestInput>(props.testInput);
 
     const inputRows = testInput.inputs.map((input, index) => (
-        <div className="mb-2" key={`key${index}`}>
+        <div className="mb-2" key={`ikey${index}`}>
             {index <= 0 ? <label htmlFor={`row${index}`} className="col-sm-2 col-form-label">Inputs</label> : <></> }
             <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
         </div>

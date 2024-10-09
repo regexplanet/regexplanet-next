@@ -18,7 +18,7 @@ export function Footer() {
             {link.label}
         </Link>);
         if (index < links.length - 1) {
-            initial.push(<span className="mx-1" key={`key${index}`}>|</span>);
+            initial.push(<span className="mx-1" key={`fkey${index}`}>|</span>);
         }
     }
     );
