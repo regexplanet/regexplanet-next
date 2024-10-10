@@ -20,7 +20,7 @@ async function lookupShareCode(shareCode: string): Promise<ShareFormState> {
     //shareCode = "yyyyfud6z4r";
     const shareApiUrl = shareCode.indexOf('-') === -1 
         ? `https://appengine.regexplanet.com/share/index.json?share=${shareCode}` 
-        : `https://www.regex.zone/share/lookup.json?share=${shareCode}`;
+        : `https://www.regex.zone/sharing/lookup.json?share=${shareCode}`;
     const response = await fetch(shareApiUrl);
     const data = await response.json();
     console.log(`server response=${JSON.stringify(data)}`);
@@ -29,7 +29,7 @@ async function lookupShareCode(shareCode: string): Promise<ShareFormState> {
             message: `Share code ${shareCode} found!`,
             messageType: 'success',
             shareCode,
-            regex: data.recipe,
+            regex: data.regex /* regex.zone */ || data.recipe /* old regexplanet */,
         };
     }
     return {

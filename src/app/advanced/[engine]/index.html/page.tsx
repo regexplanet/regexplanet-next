@@ -6,6 +6,7 @@ import TestForm from './TestForm';
 //import { testRegexAction } from './testRegexAction';
 //import OptionsInput from './OptionsInput';
 import { TestInput } from '@/types/TestInput';
+import { HelpButton } from '@/components/HelpButton';
 
 export async function generateMetadata({ params }: { params: { engine: string } }) {
     const engine = getEngine(params.engine);
@@ -48,7 +49,7 @@ export default function Page({ params }: { params: { engine: string } }) {
         <>
             <div className="d-flex justify-content-between align-items-center">
                 <h1>{engine.short_name} Regular Expression Test Page</h1>
-                <a className="btn btn-success" href={engine.help_url} target="_blank">{engine.help_label}</a>
+                <HelpButton engine={engine} />
             </div>
             <ShareLinks url={`https://regexplanet.com/advanced/${engine.handle}/index.html`} text={`Test your ${engine.short_name} regular expression`} />
             <hr />
