@@ -7,6 +7,8 @@ import TestForm from './TestForm';
 //import OptionsInput from './OptionsInput';
 import { TestInput } from '@/types/TestInput';
 import { HelpButton } from '@/components/HelpButton';
+import { cleanupSearchParam } from '@/functions/cleanupSearchParam';
+import { cleanupSearchParamArray } from '@/functions/cleanupSearchParamArray';
 
 export async function generateMetadata({ params }: { params: { engine: string } }) {
     const engine = getEngine(params.engine);
@@ -20,7 +22,13 @@ export async function generateMetadata({ params }: { params: { engine: string } 
     }
 }
 
-export default function Page({ params }: { params: { engine: string } }) {
+export default function Page({
+    params,
+    searchParams,
+}: {
+    params: { engine: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}) {
     const engine = getEngine(params.engine);
     if (!engine) {
         return notFound();
@@ -39,10 +47,14 @@ export default function Page({ params }: { params: { engine: string } }) {
 
     const testInput:TestInput = {
         engine: engine.handle,
-        regex: '',
-        replacement: '',
-        option: [],
-        inputs: ["", "", "", "", ""],
+        regex: cleanupSearchParam(searchParams["regex"]),
+        replacement: cleanupSearchParam(searchParams["replacement"]),
+        option: cleanupSearchParamArray(searchParams["option"]),
+        inputs: cleanupSearchParamArray(searchParams["input"]),
+    }
+
+    while (testInput.inputs.length < 5) {
+        testInput.inputs.push("");
     }
 
     return (
@@ -54,7 +66,7 @@ export default function Page({ params }: { params: { engine: string } }) {
             <ShareLinks url={`https://regexplanet.com/advanced/${engine.handle}/index.html`} text={`Test your ${engine.short_name} regular expression`} />
             <hr />
             {flash}
-            <TestForm engine={engine} testInput={testInput} />
+            <TestForm engine={engine} testUrl={cleanupSearchParam(searchParams["testurl"])} testInput={testInput} />
         </>
     );
     /*

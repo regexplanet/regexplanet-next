@@ -8,6 +8,7 @@ import OptionsInput from './OptionsInput';
 
 type TestFormProps = {
     engine: RegexEngine;
+    testUrl?: string;       // override for use during engine development
     testInput: TestInput;
 }
 
@@ -16,8 +17,10 @@ async function runTest(test_url:string, testInput: TestInput): Promise<TestOutpu
     const postData =
         `regex=${encodeURIComponent(testInput.regex)}` +
         `&replacement=${encodeURIComponent(testInput.replacement)}` +
-        `&${testInput.option.map((option) => `option=${option}`).join("&")}` +
-        `&${testInput.inputs.map((input) => `input=${input}`).join("&")}`;
+        `&${testInput.option.map((option) => `option=${encodeURIComponent(option)}`).join("&")}` +
+        `&${testInput.inputs.map((input) => `input=${encodeURIComponent(input)}`).join("&")}`;
+
+    console.log("posting", test_url, postData);
 
     const response = await fetch(test_url, {
         method: "POST",
@@ -45,17 +48,17 @@ export default function TestForm(props: TestFormProps) {
     ));
     console.log("render", testInput.inputs);
 
-
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
         const localInput = formDataToTestInput( props.engine.handle, formData);
-        console.log(props.engine.test_url, localInput);
+        const testUrl = props.testUrl || props.engine.test_url;
+        console.log(testUrl, localInput);
         setTestInput(localInput);
         setTestOutput(null);
-        if (props.engine.test_url) {
-            setTestOutput(await runTest(props.engine.test_url, localInput));
+        if (testUrl) {
+            setTestOutput(await runTest(testUrl, localInput));
         }
     };
 
@@ -96,13 +99,17 @@ export default function TestForm(props: TestFormProps) {
     }
 
     return (
-        <>
+        <>  
+            {
+                props.testUrl ? <div className="alert alert-warning">Testing against {props.testUrl}!</div> : <></>
+            }
             {(testInput.regex ?
                 (testOutput ? <TestResults testOutput={testOutput} /> : <><h2>Results</h2><p>Loading...</p></>)
                 : <></>)
             }
             <h2>Expression to test</h2>
-            <form method="post" action="results.html" onSubmit={onSubmit}>
+            <form method="get" action="index.html" onSubmit={onSubmit}>
+                { props.testUrl ? <input type="hidden" name="testurl" value={props.testUrl} /> : <></> }
                 <div className="mb-3">
                     <label htmlFor="regex" className="form-label">Regular Expression</label>
                     <input type="text" className="form-control" id="regex" name="regex" defaultValue={testInput.regex} />

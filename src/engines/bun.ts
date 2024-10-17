@@ -24,21 +24,22 @@ export const bun: RegexEngine = {
       code: "d",
       description: "Generate indices for substring matches. (hasIndices)",
     },
-    { code: "g", legacyCode: "global", description: "Global search. (global)" },
+    { code: "g", description: "Global search. (global)" },
     {
       code: "i",
-      legacyCode: "ignorecase",
       description: "Case-insensitive search. (ignoreCase)",
+      portableCode: "ignorecase",
     },
     {
       code: "m",
-      legacyCode: "multiline",
+      portableCode: "multiline",
       description:
         "Allows ^ and $ to match next to newline characters. (multiline)",
     },
     {
       code: "s",
       description: "Allows . to match newline characters. (dotAll)",
+      portableCode: "dotall",
     },
     {
       code: "u",
