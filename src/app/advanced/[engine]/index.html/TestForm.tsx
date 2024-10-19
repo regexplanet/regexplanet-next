@@ -28,6 +28,7 @@ async function runTest(test_url:string, testInput: TestInput): Promise<TestOutpu
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
+        mode: "no-cors",
     });
     const data = await response.json();
 

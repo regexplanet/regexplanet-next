@@ -2,6 +2,7 @@ import type { RegexEngine } from "./RegexEngine";
 
 import { browser } from "./browser";
 import { bun } from "./bun";
+import { deno } from "./deno";
 import { dotnet } from "./dotnet";
 import { erlang } from "./erlang";
 import { go } from "./go";
@@ -22,6 +23,7 @@ import { xregexp } from "./xregexp";
 const engineMap = new Map<string, RegexEngine>([
   [browser.handle, browser],
   [bun.handle, bun],
+  [deno.handle, deno],
   [erlang.handle, erlang],
   [go.handle, go],
   [haskell.handle, haskell],
