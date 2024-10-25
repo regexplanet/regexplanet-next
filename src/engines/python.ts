@@ -58,7 +58,7 @@ export const python: RegexEngine = {
     },
   ],
   short_name: "Python",
-  source_url: "https://github.com/regexplanet/regexplanet-python",
-  status_url: "https://regexplanet-python.appspot.com/status.json",
-  test_url: "https://regexplanet-python.appspot.com/test.json",
+  source_url: "https://github.com/regexplanet/regexplanet-python3",
+  status_url: "https://python3.gcr.regexplanet.com/status.json",
+  test_url: "https://python3.gcr.regexplanet.com/test.json",
 };

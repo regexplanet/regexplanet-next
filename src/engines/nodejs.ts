@@ -56,7 +56,7 @@ export const nodejs: RegexEngine = {
     },*/
   ],
   short_name: "Node.js",
-  source_url: "https://github.com/regexplanet/regexplanet-js",
-  status_url: "https://js.gcr.regexplanet.com/status.json",
-  test_url: "https://js.gcr.regexplanet.com/test.json",
+  source_url: "https://github.com/regexplanet/regexplanet-nodejs",
+  status_url: "https://nodejs.gcr.regexplanet.com/status.json",
+  test_url: "https://nodejs.gcr.regexplanet.com/test.json",
 };

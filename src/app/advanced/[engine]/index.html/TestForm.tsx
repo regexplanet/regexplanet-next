@@ -1,11 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import { TestInput } from '@/types/TestInput';
-import { TestOutput } from '@/types/TestOutput';
 import { TestResults } from '@/components/TestResults';
 import { RegexEngine } from '@/engines/RegexEngine';
 import OptionsInput from './OptionsInput';
-
+import { runTest as runBrowserTest, type TestInput, type TestOutput } from '@regexplanet/common';
 type TestFormProps = {
     engine: RegexEngine;
     testUrl?: string;       // override for use during engine development
@@ -14,10 +12,14 @@ type TestFormProps = {
 
 async function runTest(test_url:string, testInput: TestInput): Promise<TestOutput> {
 
+    if (test_url === 'javascript:runBrowserTest') {
+        return runBrowserTest(testInput);
+    }
+
     const postData =
         `regex=${encodeURIComponent(testInput.regex)}` +
         `&replacement=${encodeURIComponent(testInput.replacement)}` +
-        `&${testInput.option.map((option) => `option=${encodeURIComponent(option)}`).join("&")}` +
+        `&${testInput.options.map((option) => `option=${encodeURIComponent(option)}`).join("&")}` +
         `&${testInput.inputs.map((input) => `input=${encodeURIComponent(input)}`).join("&")}`;
 
     console.log("posting", test_url, postData);
@@ -28,8 +30,9 @@ async function runTest(test_url:string, testInput: TestInput): Promise<TestOutpu
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        mode: "no-cors",
+        //mode: "no-cors",
     });
+    console.log("response", response);
     const data = await response.json();
 
     console.log("test results", data);
@@ -119,7 +122,7 @@ export default function TestForm(props: TestFormProps) {
                     <label htmlFor="replacement" className="form-label">Replacement</label>
                     <input type="text" className="form-control" id="replacement" name="replacement" defaultValue={testInput.replacement} />
                 </div>
-                { props.engine.options.length > 0 ? <OptionsInput engine={props.engine} options={testInput.option} /> : <></> }
+                { props.engine.options.length > 0 ? <OptionsInput engine={props.engine} options={testInput.options} /> : <></> }
                 <button type="submit" className="btn btn-primary">Test</button>
                 {inputRows}
                 <button type="submit" className="btn btn-primary">Test</button>
@@ -135,7 +138,7 @@ function formDataToTestInput(engineHandle:string, formData: FormData): TestInput
         engine: engineHandle,
         regex: formData.get('regex') as string,
         replacement: formData.get('replacement') as string,
-        option: formData.getAll('option') as string[],
+        options: formData.getAll('option') as string[],
         inputs: formData.getAll('input') as string[]
     };
     return retVal;;

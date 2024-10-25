@@ -4,7 +4,7 @@ import { PiArrowSquareOut } from "react-icons/pi";
 
 type OptionInputProps = {
     engine: RegexEngine;
-    options: string[];
+    optionsOrNull: string[];
 };
 
 function getBackendValue(option: RegexOption): string {
@@ -15,7 +15,9 @@ function getBackendValue(option: RegexOption): string {
     return option.code;
 }
 
-export default function OptionsInput({ engine, options }: OptionInputProps) {
+export default function OptionsInput({ engine, optionsOrNull }: OptionInputProps) {
+
+    const options = optionsOrNull || [];
 
     const optionCheckboxes = engine.options.map((option) => {
         const optionValue = getBackendValue(option);

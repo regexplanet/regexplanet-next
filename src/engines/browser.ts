@@ -31,15 +31,13 @@ export const browser: RegexEngine = {
       code: "d",
       description: "Generate indices for substring matches. (hasIndices)",
     },
-    { code: "g", legacyCode: "global", description: "Global search. (global)" },
+    { code: "g", description: "Global search. (global)" },
     {
       code: "i",
-      legacyCode: "ignorecase",
       description: "Case-insensitive search. (ignoreCase)",
     },
     {
       code: "m",
-      legacyCode: "multiline",
       description:
         "Allows ^ and $ to match next to newline characters. (multiline)",
     },
@@ -64,7 +62,7 @@ export const browser: RegexEngine = {
   short_name: "Your Browser",
   source_url: "https://github.com/regexplanet/regexplanet-next",
   status_url: undefined,
-  test_url: "javascript:",
+  test_url: "javascript:runBrowserTest",
 };
 
 
