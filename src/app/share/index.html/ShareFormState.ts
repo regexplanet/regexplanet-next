@@ -1,4 +1,4 @@
-import { TestInput } from "@/types/TestInput";
+import { type TestInput } from "@regexplanet/common";
 
 export type ShareFormState = {
   shareCode?: string;

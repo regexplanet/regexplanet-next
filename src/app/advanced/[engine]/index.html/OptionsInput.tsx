@@ -4,7 +4,7 @@ import { PiArrowSquareOut } from "react-icons/pi";
 
 type OptionInputProps = {
     engine: RegexEngine;
-    optionsOrNull: string[];
+    options: string[];
 };
 
 function getBackendValue(option: RegexOption): string {
@@ -15,7 +15,7 @@ function getBackendValue(option: RegexOption): string {
     return option.code;
 }
 
-export default function OptionsInput({ engine, optionsOrNull }: OptionInputProps) {
+export default function OptionsInput({ engine, options: optionsOrNull }: OptionInputProps) {
 
     const options = optionsOrNull || [];
 

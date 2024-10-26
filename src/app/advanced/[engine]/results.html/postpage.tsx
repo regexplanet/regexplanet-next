@@ -1,10 +1,9 @@
 "use server"
 import { TestResults } from "@/components/TestResults";
-import { TestOutput } from "@/types/TestOutput";
+import { type TestInput, type TestOutput } from "@regexplanet/common";
 import RootLayout from "@/app/layout";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { TestInput } from "@/types/TestInput";
 
 
 // doesn't have layout

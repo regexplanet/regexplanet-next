@@ -1,17 +1,4 @@
 import type { RegexEngine } from "./RegexEngine";
-//import { TestInput } from "@/types/TestInput";
-//import { TestOutput } from "@/types/TestOutput";
-
-/*
-const browserTest:TestFn = (testInput: TestInput): Promise<TestOutput> => {
-    const retVal:TestOutput = {
-      success: true,
-      html: `<div class="alert alert-warning">Not implemented yet</div>`,
-    }
-
-    return Promise.resolve(retVal);
-  };
-*/
 
 export const browser: RegexEngine = {
   description: "RegExp class",

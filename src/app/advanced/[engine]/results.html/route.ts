@@ -1,10 +1,10 @@
-import { TestInput } from "@/types/TestInput";
-import { TestOutput } from "@/types/TestOutput";
 import { NextRequest } from "next/server";
 //import { renderToStaticMarkup, renderToString } from "react-dom/server";
-import { postpage } from "./postpage";
-import { getEngine } from "@/engines";
 import { notFound, redirect } from "next/navigation";
+
+import { postpage } from "./postpage";
+import { type TestInput, type TestOutput } from "@regexplanet/common";
+import { getEngine } from "@/engines";
 
 async function renderPage(
   engine: string,
@@ -50,12 +50,12 @@ export async function POST(
     engine: engine.handle,
     regex: (rawData.get("regex") || "") as string,
     replacement: (rawData.get("replacement") || "") as string,
-    option: (rawData.getAll("options") || "") as string[],
+    options: (rawData.getAll("option") || "") as string[],
     inputs: (rawData.getAll("input") || []) as string[],
   };
 
-  const response = await fetch(engine.test_url);//(testInput);
-  const testOutput = await response.json() as TestOutput;
+  const response = await fetch(engine.test_url); //(testInput);
+  const testOutput = (await response.json()) as TestOutput;
 
   const html = await renderPage(engine.handle, "post", testInput, testOutput);
 

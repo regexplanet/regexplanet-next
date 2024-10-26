@@ -1,6 +1,6 @@
 import { getEngineOrThrow } from "@/engines"
-import { TestInput } from "@/types/TestInput";
-import { TestOutput } from "@/types/TestOutput";
+import { type TestInput, type TestOutput } from "@regexplanet/common";
+
 
 export async function testRegexAction(engineHandle: string, formData: FormData) {
     'use server'
@@ -14,7 +14,7 @@ export async function testRegexAction(engineHandle: string, formData: FormData) 
         engine: engineHandle,
         regex: formData.get('regex') as string,
         replacement: formData.get('replacement') as string,
-        option: formData.getAll('option') as string[],
+        options: formData.getAll('option') as string[],
         inputs: formData.getAll('input') as string[],
     }
 

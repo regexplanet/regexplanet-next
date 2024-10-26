@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import TestForm from './TestForm';
 //import { testRegexAction } from './testRegexAction';
 //import OptionsInput from './OptionsInput';
-import { TestInput } from '@/types/TestInput';
+import { type TestInput } from '@regexplanet/common';
 import { HelpButton } from '@/components/HelpButton';
 import { cleanupSearchParam } from '@/functions/cleanupSearchParam';
 import { cleanupSearchParamArray } from '@/functions/cleanupSearchParamArray';
@@ -49,7 +49,7 @@ export default function Page({
         engine: engine.handle,
         regex: cleanupSearchParam(searchParams["regex"]),
         replacement: cleanupSearchParam(searchParams["replacement"]),
-        option: cleanupSearchParamArray(searchParams["option"]),
+        options: cleanupSearchParamArray(searchParams["option"]),
         inputs: cleanupSearchParamArray(searchParams["input"]),
     }
 

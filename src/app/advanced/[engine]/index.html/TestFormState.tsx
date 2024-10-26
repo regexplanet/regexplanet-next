@@ -1,5 +1,4 @@
-import { TestInput } from "@/types/TestInput";
-import { TestOutput } from "@/types/TestOutput";
+import { type TestInput, type TestOutput } from "@regexplanet/common";
 
 export type TestFormState = {
     message?: string;

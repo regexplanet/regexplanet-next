@@ -1,13 +1,10 @@
-import { TestInput } from "@/types/TestInput";
-import { TestOutput } from "@/types/TestOutput";
-
 type PortableCodes = "ignorecase" | "multiline" | "comments" | "dotall";
 
 export type RegexOption = {
   code: string;
-  legacyCode?: string;    // for the original RegexPlanet backends
-  portableCode?: PortableCodes;  // for translating this code when switching to other engines
-  numericCode?: number;    // the value for engines that use a numeric bitmask for options
+  legacyCode?: string; // for the original RegexPlanet backends
+  portableCode?: PortableCodes; // for translating this code when switching to other engines
+  numericCode?: number; // the value for engines that use a numeric bitmask for options
   description: string;
 };
 
@@ -19,7 +16,7 @@ export type RegexExtraInput = {
   defaultValue: string; // the default value to use if the user doesn't provide one
 };
 
-type RegexEngine = {
+export type RegexEngine = {
   description: string; // library or module name (do not include `short_name`)
   enabled: boolean; // always true for now
   extra_inputs?: RegexExtraInput[]; // A list of extra inputs to gather from the user
@@ -39,29 +36,3 @@ type RegexEngine = {
   status_url?: string; // URL of the status endpoint
   test_url?: string; // URL of the test endpoint
 };
-
-type TestFn = (testInput: TestInput) => Promise<TestOutput>;
-
-function generateRemoteTestFn(test_url: string): TestFn {
-  
-  return async (testInput: TestInput): Promise<TestOutput> => {
-    // this is a bogus 'as', but next build insists on it
-    const postData =
-      `regex=${encodeURIComponent(testInput.regex)}` +
-      `&replacement=${encodeURIComponent(testInput.replacement)}` +
-      `&${testInput.option.map((option) => `option=${option}`).join("&")}` +
-      `&${testInput.inputs.map((input) => `input=${input}`).join("&")}`;
-    const response = await fetch(test_url, {
-      method: "POST",
-      body: postData,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    });
-    const data = await response.json();
-
-    return data as TestOutput;
-  }
-}
-
-export { generateRemoteTestFn, type RegexEngine, type TestFn };

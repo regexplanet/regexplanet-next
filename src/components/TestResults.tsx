@@ -1,4 +1,4 @@
-import { TestOutput } from "@/types/TestOutput";
+import { type TestOutput } from "@regexplanet/common";
 
 type props = {
     testOutput: TestOutput;

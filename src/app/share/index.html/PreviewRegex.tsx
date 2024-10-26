@@ -1,4 +1,4 @@
-import { TestInput } from '@/types/TestInput';
+import { type TestInput } from "@regexplanet/common";
 import { SubmitButton } from '@/components/SubmitButton';
 import { getWorkingEngine, getWorkingEngineOrThrow } from '@/engines';
 
