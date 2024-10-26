@@ -4,13 +4,34 @@ import { TestResults } from '@/components/TestResults';
 import { RegexEngine } from '@/engines/RegexEngine';
 import OptionsInput from './OptionsInput';
 import { runTest as runBrowserTest, type TestInput, type TestOutput } from '@regexplanet/common';
+
 type TestFormProps = {
     engine: RegexEngine;
     testUrl?: string;       // override for use during engine development
     testInput: TestInput;
 }
 
+function setTestInput(testInput: TestInput) {
+    const searchParams = new URLSearchParams();
+    searchParams.set('regex', testInput.regex);
+    searchParams.set('replacement', testInput.replacement);
+    testInput.options.forEach(option => searchParams.append('option', option));
+    testInput.inputs.forEach(input => searchParams.append('input', input));
+
+    const url = new URL(window.location.href);
+    url.search = searchParams.toString();
+    window.history.pushState({}, '', url.toString());
+}
+
 async function runTest(test_url:string, testInput: TestInput): Promise<TestOutput> {
+
+    console.log("running test", testInput);
+    if (!testInput || !testInput.regex) {
+        return {
+            success: false,
+            message: "Please enter a regular expression to test",
+        };
+    }
 
     if (test_url === 'javascript:runBrowserTest') {
         return runBrowserTest(testInput);
@@ -42,15 +63,19 @@ async function runTest(test_url:string, testInput: TestInput): Promise<TestOutpu
 
 export default function TestForm(props: TestFormProps) {
     const [testOutput, setTestOutput] = useState<TestOutput | null>();
-    const [testInput, setTestInput] = useState<TestInput>(props.testInput);
+    //const [testInput, setTestInput] = useState<TestInput>(props.testInput);
+    const testInput = props.testInput;
 
     const inputRows = testInput.inputs.map((input, index) => (
         <div className="mb-2" key={`ikey${index}`}>
-            {index <= 0 ? <label htmlFor={`row${index}`} className="col-sm-2 col-form-label">Inputs</label> : <></> }
             <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
         </div>
     ));
     console.log("render", testInput.inputs);
+
+    const onClearResults = () => {
+        setTestOutput(null);
+    };
 
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -60,9 +85,11 @@ export default function TestForm(props: TestFormProps) {
         const testUrl = props.testUrl || props.engine.test_url;
         console.log(testUrl, localInput);
         setTestInput(localInput);
-        setTestOutput(null);
+        setTestOutput({ success: true, message: "Loading..."});
         if (testUrl) {
-            setTestOutput(await runTest(testUrl, localInput));
+            const newTestOutput = await runTest(testUrl, localInput);
+            console.log("newTestOutput", newTestOutput);
+            setTestOutput(newTestOutput);
         }
     };
 
@@ -107,10 +134,6 @@ export default function TestForm(props: TestFormProps) {
             {
                 props.testUrl ? <div className="alert alert-warning">Testing against {props.testUrl}!</div> : <></>
             }
-            {(testInput.regex ?
-                (testOutput ? <TestResults testOutput={testOutput} /> : <><h2>Results</h2><p>Loading...</p></>)
-                : <></>)
-            }
             <h2>Expression to test</h2>
             <form method="get" action="index.html" onSubmit={onSubmit}>
                 { props.testUrl ? <input type="hidden" name="testurl" value={props.testUrl} /> : <></> }
@@ -124,6 +147,11 @@ export default function TestForm(props: TestFormProps) {
                 </div>
                 { props.engine.options.length > 0 ? <OptionsInput engine={props.engine} options={testInput.options} /> : <></> }
                 <button type="submit" className="btn btn-primary">Test</button>
+                {
+                    (testOutput ? <TestResults onClear={onClearResults} testOutput={testOutput} /> : <></>)
+                    
+                }
+                <h2 className="pt-3">Inputs</h2>
                 {inputRows}
                 <button type="submit" className="btn btn-primary">Test</button>
                 <button className="ms-3 btn btn-outline-primary" onClick={onMoreInputs}>More inputs</button>
@@ -141,5 +169,5 @@ function formDataToTestInput(engineHandle:string, formData: FormData): TestInput
         options: formData.getAll('option') as string[],
         inputs: formData.getAll('input') as string[]
     };
-    return retVal;;
+    return retVal;
 }

@@ -3,8 +3,6 @@ import { getEngine } from '@/engines';
 import { ShareLinks } from '@/components/ShareLinks';
 import { notFound } from 'next/navigation';
 import TestForm from './TestForm';
-//import { testRegexAction } from './testRegexAction';
-//import OptionsInput from './OptionsInput';
 import { type TestInput } from '@regexplanet/common';
 import { HelpButton } from '@/components/HelpButton';
 import { cleanupSearchParam } from '@/functions/cleanupSearchParam';
@@ -69,43 +67,4 @@ export default function Page({
             <TestForm engine={engine} testUrl={cleanupSearchParam(searchParams["testurl"])} testInput={testInput} />
         </>
     );
-    /*
-    const testRegexEngineAction = testRegexAction.bind(null, engine.handle);
-
-    const inputs = ["", "", "", "", ""];
-
-    const inputRows = inputs.map((input, index) => (
-        <div className="mb-2" key={`key${index}`}>
-            {index <= 0 ? <label htmlFor={`row${index}`} className="col-sm-2 col-form-label">Inputs</label> : <></>}
-            <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
-        </div>
-    ));
-
-    return (
-        <>
-            <div className="d-flex justify-content-between align-items-center">
-                <h1>{engine.short_name} Regular Expression Test Page</h1>
-                <a className="btn btn-success" href={engine.help_url} target="_blank">{engine.help_label}</a>
-            </div>
-            <ShareLinks url={`https://regexplanet.com/advanced/${engine.handle}/index.html`} text={`Test your ${engine.short_name} regular expression`} />
-            <hr />
-            {flash}
-            <h2>Expression to test</h2>
-            <form method="post" action={testRegexEngineAction}>
-                <div className="mb-3">
-                    <label htmlFor="regex" className="form-label">Regular Expression</label>
-                    <input type="text" className="form-control" id="regex" name="regex" />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="replacement" className="form-label">Replacement</label>
-                    <input type="text" className="form-control" id="replacement" name="replacement" />
-                </div>
-                {engine.options.length > 0 ? <OptionsInput engine={engine} options={[]} /> : <></>}
-                <button type="submit" className="btn btn-primary">Test</button>
-                {inputRows}
-                <button type="submit" className="btn btn-primary">Test</button>
-            </form>
-        </>
-    );
-    */
 }

@@ -9,7 +9,7 @@ import { PiBlueprint, PiBlueprintBold, PiCloudCheck, PiCloudCheckBold, PiPlay, P
 
 const links = [
     { link: '/', label: 'Testing', startsWith: '/advanced/', icon: <PiPlay />, icon_bold: <PiPlayBold /> },
-    { link: 'https://www.regex.zone/patterns/', label: 'Patterns', startsWith: '/patterns/', icon: <PiBlueprint />, icon_bold: <PiBlueprintBold /> }, 
+    { link: 'https://www.regex.zone/patterns/', label: 'Patterns', startsWith: '/patterns/', icon: <PiBlueprint />, icon_bold: <PiBlueprintBold /> },
     {
         link: '/status.html', label: 'Status', startsWith: '/status.html', icon: <PiCloudCheck />, icon_bold: <PiCloudCheckBold />
     },

@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 export async function postpage(testOutput: TestOutput) {
     return (
         <>
-            <TestResults testOutput={testOutput} />
+            <TestResults onClear={() => {}} testOutput={testOutput} />
         </>
     );
 }
@@ -19,7 +19,7 @@ export async function postpage(testOutput: TestOutput) {
 export async function bad500_2(testOutput: TestOutput) {
     return (
         <RootLayout>
-            <TestResults testOutput={testOutput} />
+            <TestResults onClear={() => { }} testOutput={testOutput} />
         </RootLayout>
     );
 }
@@ -30,7 +30,7 @@ export async function bad500(testOutput: TestOutput) {
             <body>
                 <Navbar />
                 <div className="container-lg mt-4">
-                    <TestResults testOutput={testOutput} />
+                    <TestResults onClear={() => { }} testOutput={testOutput} />
                 </div>
                 <Footer />
             </body>

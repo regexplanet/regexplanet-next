@@ -55,6 +55,6 @@ export const postgresql: RegexEngine = {
   ],
   short_name: "PostgreSQL",
   source_url: "https://github.com/regexplanet/regexplanet-postgresql",
-  status_url: "https://regexplanet-postgresql.gcr.regexplanet.com/status.json",
-  test_url: "https://regexplanet-postgresql.gcr.regexplanet.com/test.json",
+  status_url: "https://postgresql.gcr.regexplanet.com/status.json",
+  test_url: "https://postgresql.gcr.regexplanet.com/test.json",
 };
