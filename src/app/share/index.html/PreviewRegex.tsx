@@ -1,5 +1,4 @@
 import { type TestInput } from "@regexplanet/common";
-import { SubmitButton } from '@/components/SubmitButton';
 import { getWorkingEngines } from '@/engines';
 
 type PreviewRegexProps = {

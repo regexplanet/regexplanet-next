@@ -4,6 +4,8 @@ import { TestResults } from '@/components/TestResults';
 import { RegexEngine } from '@/engines/RegexEngine';
 import OptionsInput from './OptionsInput';
 import { runTest as runBrowserTest, type TestInput, type TestOutput } from '@regexplanet/common';
+import { useRouter } from 'next/navigation';
+import { formDataToTestInput } from '@/functions/formDataToTestInput';
 
 type TestFormProps = {
     engine: RegexEngine;
@@ -63,6 +65,7 @@ async function runTest(test_url:string, testInput: TestInput): Promise<TestOutpu
 
 export default function TestForm(props: TestFormProps) {
     const [testOutput, setTestOutput] = useState<TestOutput | null>();
+    const router = useRouter()
     //const [testInput, setTestInput] = useState<TestInput>(props.testInput);
     const testInput = props.testInput;
 
@@ -127,7 +130,28 @@ export default function TestForm(props: TestFormProps) {
         }
         setTestInput(localInput);
         console.log("after fewer", localInput.inputs);
-    }
+    };
+
+    const onSwitchEngines = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        const form = event.currentTarget.form;
+        if (!form) {
+            return;
+        }
+        const formData = new FormData(form);
+        const localInput = formDataToTestInput(props.engine.handle, formData);
+
+        const searchParams = new URLSearchParams();
+        searchParams.set('engine', props.engine.handle);
+        searchParams.set('regex', localInput.regex);
+        searchParams.set('replacement', localInput.replacement);
+        localInput.options.forEach(option => searchParams.append('option', option));
+        localInput.inputs.forEach(input => searchParams.append('input', input));
+
+        const url = new URL('/advanced/select.html', window.location.href);
+        url.search = searchParams.toString();
+        router.push(url.toString());
+    };
 
     return (
         <>  
@@ -156,18 +180,9 @@ export default function TestForm(props: TestFormProps) {
                 <button type="submit" className="btn btn-primary">Test</button>
                 <button className="ms-3 btn btn-outline-primary" onClick={onMoreInputs}>More inputs</button>
                 { testInput.inputs.length > 5 ? <button className="ms-3 btn btn-outline-primary" onClick={onFewerInputs}>Fewer inputs</button> : null }
+                <button type="submit" className="btn btn-outline-primary float-end" onClick={onSwitchEngines}>Switch Engines</button>
             </form>
         </>
     );
 }
 
-function formDataToTestInput(engineHandle:string, formData: FormData): TestInput {
-    const retVal: TestInput = {
-        engine: engineHandle,
-        regex: formData.get('regex') as string,
-        replacement: formData.get('replacement') as string,
-        options: formData.getAll('option') as string[],
-        inputs: formData.getAll('input') as string[]
-    };
-    return retVal;
-}
