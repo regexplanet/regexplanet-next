@@ -27,6 +27,13 @@ function getHost(status_url: string|undefined) {
     </>
 }
 
+function versionDetail(version: string, detail?:string) {
+    if (detail) {
+        return (<details><summary>{version}</summary>{detail}</details>)
+    }
+    return <>{version}</>
+}
+
 const SLOW_TIME_MILLIS = 10 * 1000;
 
 function EngineStatusColumns(status: EngineStatus | undefined) {
@@ -78,7 +85,7 @@ function EngineStatusColumns(status: EngineStatus | undefined) {
             <td>
                 <img src={icon_url} alt={alt_text} title={alt_text} /> {text}
             </td>
-            <td>{status.version}</td>
+            <td>{versionDetail(status.version, status.detail)}</td>
             <td className="d-none d-lg-table-cell">{status.time_millis}</td>
         </>
     );
@@ -98,6 +105,7 @@ async function fetchOneResult(url: string): Promise<EngineStatus> {
         return {
             success: data.success,
             version: data.version,
+            detail: data.detail,
             time_millis: elapsed,
         };
     } catch (err) {
@@ -159,8 +167,7 @@ export function ResultsTable() {
                     {getEngines().filter(engine => engine.status_url).map((engine, index) => (
                         <tr key={engine.handle}>
                             <td>
-                                <img className="pe-2" src={engine.logo_icon} alt={engine.short_name} style={{ "height": "1.25em" }} />
-                                <Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
+                                <img className="pe-2" src={engine.logo_icon} alt={engine.short_name} style={{ "height": "1.25em" }} />&nbsp;<Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
                             </td>
                             {EngineStatusColumns(results[index])}
                             <td className="d-none d-lg-table-cell">{getHost(engine.status_url)}</td>
