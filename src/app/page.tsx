@@ -33,7 +33,8 @@ export default function Home() {
 
       <hr />
 
-      <div className="d-flex justify-content-center align-items-start">
+      <div className="row mt-3">
+        <div className="col d-flex flex-wrap justify-content-center">
         <div className="card m-3 d-inline-block" style={{ "width": "18rem" }}>
           <h5 className="card-header border-bottom p-3 bg-body-tertiary">Sharing</h5>
           <div className="card-body pt-1">
@@ -68,7 +69,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
+      </div>
     </div >
 
       <hr />
