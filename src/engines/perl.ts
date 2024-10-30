@@ -13,8 +13,7 @@ export const perl: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/perl/perl-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/perl/perl-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/gkh86985-3ae2-4w7b-8opi-il8pki62v1ie",
+  nodeping_id: "gkh86985-3ae2-4w7b-8opi-il8pki62v1ie",
   options: [
     {
       code: "m",

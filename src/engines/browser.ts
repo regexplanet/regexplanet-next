@@ -7,11 +7,11 @@ export const browser: RegexEngine = {
   help_url:
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
   handle: "browser",
-  level: "alpha",
+  level: "golden",
   links: {},
   logo_icon: "/images/browsers/browser-icon.svg",
   logo_ar21: "/images/browsers/browser-ar21.svg",
-  nodeping_url: undefined,
+  nodeping_id: "N/A",
   notfound: ["javascript", "typescript"],
   options: [
     {

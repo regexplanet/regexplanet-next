@@ -11,7 +11,7 @@ export function TestResults({ onClear, testOutput }: props) {
     return (
         <>
             <h2 className="pt-3">Results <button className="btn btn-outline-primary btn-sm" onClick={onClear}>Clear</button></h2>
-            { testOutput.message ? <div className={messageClass}>{testOutput.message}</div> : <></>}
+            { testOutput.message && testOutput.message != "OK" ? <div className={messageClass}>{testOutput.message}</div> : <></>}
             { testOutput.html ? <div dangerouslySetInnerHTML={{ __html: testOutput.html }} /> : <></> }
             <hr/>
         </>

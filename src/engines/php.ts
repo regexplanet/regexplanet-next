@@ -6,15 +6,14 @@ export const php: RegexEngine = {
   help_label: "PCRE Overview",
   help_url: "http://www.php.net/manual/en/book.pcre.php",
   handle: "php",
-  level: "alpha",
+  level: "beta",
   links: {
     "Pattern Modifiers":
       "http://www.php.net/manual/en/reference.pcre.pattern.modifiers.php",
   },
   logo_icon: "https://www.vectorlogo.zone/logos/php/php-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/php/php-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/tv5izwkj-w7m2-4epk-8l9i-2z8y36h0o1n1",
+  nodeping_id: "tv5izwkj-w7m2-4epk-8l9i-2z8y36h0o1n1",
   options: [
     {
       code: "i",

@@ -7,7 +7,7 @@ export const deno: RegexEngine = {
   help_url:
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
   handle: "deno",
-  level: "beta",
+  level: "golden",
   links: {
     "MDN RegExp Object":
       "https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp",
@@ -16,8 +16,7 @@ export const deno: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/deno/deno-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/deno/deno-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/iajucfo0-kq0e-47ql-82sk-xoji0l2ejmfw",
+  nodeping_id: "9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
   notfound: ["javascript", "typescript"],
   options: [
     {

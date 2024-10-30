@@ -14,8 +14,9 @@ Disallow: /
 Sitemap: https://www.regexplanet.com/sitemap.xml
 
 User-agent: *
+Disallow: /int
 Disallow: /honeypot.txt
-`
+`;
     }
 
     return new Response(robotsTxt, {

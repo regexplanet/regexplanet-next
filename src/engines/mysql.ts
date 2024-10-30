@@ -10,6 +10,7 @@ export const mysql: RegexEngine = {
   links: {},
   logo_icon: "https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg",
+  nodeping_id: "LATER",
   options: [],
   short_name: "MySQL",
 };

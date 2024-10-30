@@ -12,8 +12,7 @@ export const swift: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/swift/swift-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/swift/swift-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/sd8rr8e8-0vw2-4cur-87tg-tnm9et6pc6w5",
+  nodeping_id: "sd8rr8e8-0vw2-4cur-87tg-tnm9et6pc6w5",
   options: [
     {
       code: "anchorsMatchLineEndings",

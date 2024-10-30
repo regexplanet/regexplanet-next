@@ -10,8 +10,7 @@ export const tcl: RegexEngine = {
   links: {},
   logo_icon: "https://www.vectorlogo.zone/logos/tcl/tcl-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/tcl/tcl-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/kk4u50sh-kave-4wwx-8f2i-74tgnum8szwa",
+  nodeping_id: "kk4u50sh-kave-4wwx-8f2i-74tgnum8szwa",
   options: [],
   short_name: "tcl",
   source_url: "https://github.com/regexplanet/regexplanet-tcl",

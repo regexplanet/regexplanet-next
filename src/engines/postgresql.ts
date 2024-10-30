@@ -7,15 +7,14 @@ export const postgresql: RegexEngine = {
   help_url:
     "https://www.postgresql.org/docs/current/functions-matching.html#FUNCTIONS-POSIX-REGEXP",
   handle: "postgresql",
-  level: "alpha",
+  level: "golden",
   links: {
     Options:
       "https://www.postgresql.org/docs/current/functions-matching.html#POSIX-EMBEDDED-OPTIONS-TABLE",
   },
   logo_icon: "https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/postgresql/postgresql-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/43ytdj0n-jeiu-4zta-8ptc-wr7xmxztp5i8",
+  nodeping_id: "43ytdj0n-jeiu-4zta-8ptc-wr7xmxztp5i8",
   options: [
     { code: "b", description: "rest of RE is a BRE" },
     {

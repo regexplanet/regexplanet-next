@@ -12,8 +12,7 @@ export const ruby: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
+  nodeping_id: "e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
   options: [
     {
       code: "x",
@@ -38,5 +37,5 @@ export const ruby: RegexEngine = {
   short_name: "Ruby",
   source_url: "https://github.com/regexplanet/regexplanet-ruby",
   status_url: "https://ruby.gcr.regexplanet.com/status.json",
-  test_url: "https://ruby.gcr.regexplanet.com/status.json",
+  test_url: "https://ruby.gcr.regexplanet.com/test.json",
 };

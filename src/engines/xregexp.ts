@@ -15,8 +15,7 @@ export const xregexp: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/xregexp/xregexp-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/xregexp/xregexp-ar21.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/7ysrbqyo-38sg-44au-8j78-g6fpipl8sxho",
+  nodeping_id: "7ysrbqyo-38sg-44au-8j78-g6fpipl8sxho",
   notfound: ["javascript", "typescript"],
   options: [
     {

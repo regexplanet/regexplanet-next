@@ -17,8 +17,7 @@ export const nodejs: RegexEngine = {
   },
   logo_ar21: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg",
   logo_icon: "https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
+  nodeping_id: "9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
   notfound: ["javascript", "typescript"],
   options: [
     /*{

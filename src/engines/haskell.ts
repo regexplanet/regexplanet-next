@@ -3,13 +3,12 @@ import type { RegexEngine } from "./RegexEngine";
 export const haskell: RegexEngine = {
   description: "Text.Regex",
   enabled: false,
-  level: "alpha",
+  level: "notimplemented",
   handle: "haskell",
   help_label: "Text.Regex",
   help_url:
     "http://hackage.haskell.org/package/regex-compat-0.95.1/docs/Text-Regex.html",
-  nodeping_url:
-    "https://nodeping.com/reports/checks/kt5c4lp3-80p5-4rzk-8nq2-kqtyvq4p1a2d",
+  nodeping_id: "kt5c4lp3-80p5-4rzk-8nq2-kqtyvq4p1a2d",
   links: {
     haskellwiki: "http://www.haskell.org/haskellwiki/Regular_expressions",
     "Text.Regex.TDFA":

@@ -27,7 +27,7 @@ export type RegexEngine = {
   links: Record<string, string>; // A map of (name: url) for other help links. These will be displayed on the support page under “Official Documentation”
   logo_icon: string; // SVG icon (just the logo, no text) in a square
   logo_ar21: string; // SVG logo (including language name) in a 2:1 aspect ratio
-  nodeping_url?: string; // URL of the nodeping status page
+  nodeping_id: string; // ID of the nodeping status check
   notfound?: string[]; // A list of handles that this is a substitute for (i.e. nodejs is a substitute for javascript)
   options: RegexOption[]; // A list of which options it supports.
   option_notes?: string; // Notes to display on the options page (html allowed)
