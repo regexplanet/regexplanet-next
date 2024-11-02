@@ -7,6 +7,7 @@ import { type TestInput } from '@regexplanet/common';
 import { HelpButton } from '@/components/HelpButton';
 import { cleanupSearchParam } from '@/functions/cleanupSearchParam';
 import { cleanupSearchParamArray } from '@/functions/cleanupSearchParamArray';
+import { runTestPage } from './runTestPage';
 
 export async function generateMetadata({ params }: { params: { engine: string } }) {
     const engine = getEngine(params.engine);
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: { engine: string } 
     }
 }
 
-export default function Page({
+export default async function Page({
     params,
     searchParams,
 }: {
@@ -43,6 +44,8 @@ export default function Page({
         </div>;
     }
 
+    const testUrl = cleanupSearchParam(searchParams["testurl"]) || engine.test_url || `javascript:runBrowserTest`;
+
     const testInput:TestInput = {
         engine: engine.handle,
         regex: cleanupSearchParam(searchParams["regex"]),
@@ -55,6 +58,8 @@ export default function Page({
         testInput.inputs.push("");
     }
 
+    const testOutput = testInput.regex ? await runTestPage(testUrl, testInput) : null;
+
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
@@ -64,7 +69,7 @@ export default function Page({
             <ShareLinks url={`https://regexplanet.com/advanced/${engine.handle}/index.html`} text={`Test your ${engine.short_name} regular expression`} />
             <hr />
             {flash}
-            <TestForm engine={engine} testUrl={cleanupSearchParam(searchParams["testurl"])} testInput={testInput} />
+            <TestForm engine={engine} testUrl={testUrl} testInput={testInput} testOutput={testOutput}/>
         </>
     );
 }

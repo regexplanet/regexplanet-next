@@ -1,19 +1,26 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TestResults } from '@/components/TestResults';
 import { RegexEngine } from '@/engines/RegexEngine';
 import OptionsInput from './OptionsInput';
-import { runTest as runBrowserTest, type TestInput, type TestOutput } from '@regexplanet/common';
+import { type TestInput, type TestOutput } from '@regexplanet/common';
 import { useRouter } from 'next/navigation';
 import { formDataToTestInput } from '@/functions/formDataToTestInput';
+import { runTestPage } from './runTestPage';
 
 type TestFormProps = {
     engine: RegexEngine;
-    testUrl?: string;       // override for use during engine development
+    testUrl: string;
     testInput: TestInput;
+    testOutput: TestOutput|null;
 }
 
-function setTestInput(testInput: TestInput) {
+const pendingTestOutput: TestOutput = {
+    success: true,
+    html: `<p><img src="/images/spinner.gif" alt="spinner" /> Running, please wait...</p>`,
+};
+
+function setTestInput(testInput: TestInput): string {
     const searchParams = new URLSearchParams();
     searchParams.set('regex', testInput.regex);
     searchParams.set('replacement', testInput.replacement);
@@ -22,49 +29,13 @@ function setTestInput(testInput: TestInput) {
 
     const url = new URL(window.location.href);
     url.search = searchParams.toString();
-    window.history.pushState({}, '', url.toString());
-}
 
-async function runTest(test_url:string, testInput: TestInput): Promise<TestOutput> {
-
-    console.log("running test", testInput);
-    if (!testInput || !testInput.regex) {
-        return {
-            success: false,
-            message: "Please enter a regular expression to test",
-        };
-    }
-
-    if (test_url === 'javascript:runBrowserTest') {
-        return runBrowserTest(testInput);
-    }
-
-    const postData =
-        `regex=${encodeURIComponent(testInput.regex)}` +
-        `&replacement=${encodeURIComponent(testInput.replacement)}` +
-        `&${testInput.options.map((option) => `option=${encodeURIComponent(option)}`).join("&")}` +
-        `&${testInput.inputs.map((input) => `input=${encodeURIComponent(input)}`).join("&")}`;
-
-    console.log("posting", test_url, postData);
-
-    const response = await fetch(test_url, {
-        method: "POST",
-        body: postData,
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        //mode: "no-cors",
-    });
-    console.log("response", response);
-    const data = await response.json();
-
-    console.log("test results", data);
-
-    return data as TestOutput;
+    //window.history.pushState({}, '', url.toString());
+    return url.toString();
 }
 
 export default function TestForm(props: TestFormProps) {
-    const [testOutput, setTestOutput] = useState<TestOutput | null>();
+    const [testOutput, setTestOutput] = useState<TestOutput | null>(props.testOutput);   
     const router = useRouter()
     //const [testInput, setTestInput] = useState<TestInput>(props.testInput);
     const testInput = props.testInput;
@@ -79,22 +50,36 @@ export default function TestForm(props: TestFormProps) {
     const onClearResults = () => {
         setTestOutput(null);
     };
-
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
         const localInput = formDataToTestInput( props.engine.handle, formData);
-        const testUrl = props.testUrl || props.engine.test_url;
-        console.log(testUrl, localInput);
+        console.log(props.testUrl, localInput);
         setTestInput(localInput);
-        setTestOutput({ success: true, message: "Loading..."});
-        if (testUrl) {
-            const newTestOutput = await runTest(testUrl, localInput);
-            console.log("newTestOutput", newTestOutput);
-            setTestOutput(newTestOutput);
-        }
+        setTestOutput(pendingTestOutput);
+        const newTestOutput = await runTestPage(props.testUrl, localInput);
+        console.log("newTestOutput", newTestOutput);
+        setTestOutput(newTestOutput);
     };
+/*
+    const onSubmit = () => {
+        setTestOutput(pendingTestOutput);
+    }
+*/
+    
+    useEffect(() => {
+        async function runTestEffect() {
+        if (props.testInput.regex) {
+            const testUrl = props.testUrl || props.engine.test_url;
+            if (testUrl) {
+                const newTestOutput = await runTestPage(testUrl, props.testInput);
+                setTestOutput(newTestOutput);
+            }
+        }}
+        if (props.testInput.regex) { setTestOutput(pendingTestOutput) };
+        runTestEffect();
+    }, [props.testInput, props.testUrl, props.engine.test_url]);
 
     const onMoreInputs = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -111,7 +96,7 @@ export default function TestForm(props: TestFormProps) {
         }
         console.log("after more", localInput.inputs);
 
-        setTestInput(localInput);
+        router.push(setTestInput(localInput));
     }
 
     const onFewerInputs = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -128,8 +113,8 @@ export default function TestForm(props: TestFormProps) {
         while (localInput.inputs.length < 5) {
             localInput.inputs.push('');
         }
-        setTestInput(localInput);
         console.log("after fewer", localInput.inputs);
+        router.push(setTestInput(localInput));
     };
 
     const onSwitchEngines = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -156,7 +141,7 @@ export default function TestForm(props: TestFormProps) {
     return (
         <>  
             {
-                props.testUrl ? <div className="alert alert-warning">Testing against {props.testUrl}!</div> : <></>
+                props.testUrl != props.engine.test_url ? <div className="alert alert-warning">Testing against {props.testUrl}!</div> : <></>
             }
             <h2>Expression to test</h2>
             <form method="get" action="index.html" onSubmit={onSubmit}>
@@ -173,7 +158,6 @@ export default function TestForm(props: TestFormProps) {
                 <button type="submit" className="btn btn-primary">Test</button>
                 {
                     (testOutput ? <TestResults onClear={onClearResults} testOutput={testOutput} /> : <></>)
-                    
                 }
                 <h2 className="pt-3">Inputs</h2>
                 {inputRows}
