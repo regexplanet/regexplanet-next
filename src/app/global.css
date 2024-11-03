@@ -12,3 +12,15 @@
     /*--bs-body-color: #212121;
     --bs-body-bg: #fff;*/
 }
+
+@media (scripting: none) {
+    .scripting-required {
+        display: none;        
+    }
+}
+
+@media (scripting: enabled) {
+    .only-noscript {
+        display: none;
+    }
+}

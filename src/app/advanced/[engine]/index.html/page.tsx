@@ -60,6 +60,14 @@ export default async function Page({
 
     const testOutput = testInput.regex ? await runTestPage(testUrl, testInput) : null;
 
+    const inputRows = testInput.inputs.map((input, index) => (
+        <div className="mb-2" key={`ikey${index}`}>
+            <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
+        </div>
+    ));
+    console.log("render", testInput.inputs);
+
+
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
@@ -69,7 +77,7 @@ export default async function Page({
             <ShareLinks url={`https://regexplanet.com/advanced/${engine.handle}/index.html`} text={`Test your ${engine.short_name} regular expression`} />
             <hr />
             {flash}
-            <TestForm engine={engine} testUrl={testUrl} testInput={testInput} testOutput={testOutput}/>
+            <TestForm engine={engine} testUrl={testUrl} testInput={testInput} testOutput={testOutput} inputRows={inputRows}/>
         </>
     );
 }

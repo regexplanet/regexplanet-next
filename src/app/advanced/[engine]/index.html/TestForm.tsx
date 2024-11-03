@@ -7,18 +7,29 @@ import { type TestInput, type TestOutput } from '@regexplanet/common';
 import { useRouter } from 'next/navigation';
 import { formDataToTestInput } from '@/functions/formDataToTestInput';
 import { runTestPage } from './runTestPage';
+import Link from 'next/link';
 
 type TestFormProps = {
     engine: RegexEngine;
     testUrl: string;
     testInput: TestInput;
     testOutput: TestOutput|null;
+    inputRows: React.JSX.Element[];
 }
 
 const pendingTestOutput: TestOutput = {
     success: true,
     html: `<p><img src="/images/spinner.gif" alt="spinner" /> Running, please wait...</p>`,
 };
+
+function testInputToSearchParams(testInput: TestInput): URLSearchParams {
+    const searchParams = new URLSearchParams();
+    searchParams.set('regex', testInput.regex);
+    searchParams.set('replacement', testInput.replacement);
+    testInput.options.forEach(option => searchParams.append('option', option));
+    testInput.inputs.forEach(input => searchParams.append('input', input));
+    return searchParams;
+}
 
 function setTestInput(testInput: TestInput): string {
     const searchParams = new URLSearchParams();
@@ -40,12 +51,7 @@ export default function TestForm(props: TestFormProps) {
     //const [testInput, setTestInput] = useState<TestInput>(props.testInput);
     const testInput = props.testInput;
 
-    const inputRows = testInput.inputs.map((input, index) => (
-        <div className="mb-2" key={`ikey${index}`}>
-            <input type="text" className="form-control" id={`input${index}`} name="input" defaultValue={input} />
-        </div>
-    ));
-    console.log("render", testInput.inputs);
+    const inputRows = props.inputRows;
 
     const onClearResults = () => {
         setTestOutput(null);
@@ -96,7 +102,8 @@ export default function TestForm(props: TestFormProps) {
         }
         console.log("after more", localInput.inputs);
 
-        router.push(setTestInput(localInput));
+        router.replace(setTestInput(localInput));
+        router.refresh();
     }
 
     const onFewerInputs = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -114,7 +121,8 @@ export default function TestForm(props: TestFormProps) {
             localInput.inputs.push('');
         }
         console.log("after fewer", localInput.inputs);
-        router.push(setTestInput(localInput));
+        router.replace(setTestInput(localInput));
+        router.refresh();
     };
 
     const onSwitchEngines = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -162,9 +170,10 @@ export default function TestForm(props: TestFormProps) {
                 <h2 className="pt-3">Inputs</h2>
                 {inputRows}
                 <button type="submit" className="btn btn-primary">Test</button>
-                <button className="ms-3 btn btn-outline-primary" onClick={onMoreInputs}>More inputs</button>
-                { testInput.inputs.length > 5 ? <button className="ms-3 btn btn-outline-primary" onClick={onFewerInputs}>Fewer inputs</button> : null }
-                <button type="submit" className="btn btn-outline-primary float-end" onClick={onSwitchEngines}>Switch Engines</button>
+                <button className="ms-3 btn btn-outline-primary scripting-required" onClick={onMoreInputs}>More inputs</button>
+                { testInput.inputs.length > 5 ? <button className="ms-3 btn btn-outline-primary scripting-required" onClick={onFewerInputs}>Fewer inputs</button> : null }
+                <button type="submit" className="btn btn-outline-primary float-end scripting-required" onClick={onSwitchEngines}>Switch Engines</button>
+                <Link className="btn btn-outline-primary float-end noscript-only" href={`/advanced/select.html?${testInputToSearchParams(testInput).toString()}`}>Switch Engines</Link>
             </form>
         </>
     );
