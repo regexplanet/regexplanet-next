@@ -20,6 +20,6 @@ export const go: RegexEngine = {
   option_notes: `The <code>posix</code> option is really a separate API call (<code>CompilePOSIX</code>).  Other option need to be specified in the regex pattern.`,
   short_name: "Go",
   source_url: "https://github.com/regexplanet/regexplanet-golang",
-  status_url: "https://regexplanet-go.appspot.com/status.json",
-  test_url: "https://regexplanet-go.appspot.com/test.json",
+  status_url: "https://go.gcr.regexplanet.com/status.json",
+  test_url: "https://go.gcr.regexplanet.com/test.json",
 };
