@@ -1,5 +1,17 @@
 # Change Log
 
+* 2024-11-10: Go moved to CloudRun
+* 2024-11-03: Noscript working
+* 2024-10-30: Github profile generator
+* 2024-10-28: Python3 working
+* 2024-10-26: Postgresql: switched to pg-lite on Node.js
+* 2024-10-25: Bun working
+* 2024-10-25: Deno working
+* 2024-10-07: Perl version bump
+* 2024-10-07: tcl version bumps
+* 2024-09-26: Fixed issue with AppEngine DB: shares working again
+* 2024-09-25: Ruby logos fixed
+* 2024-09-24: Java updated to 21
 * 2024-09-19: Go bumped to 1.22
 * 2024-09-18: website started on revamped using Next.js/Bootstrap 5
 * 2024-09-03: Rust alpha
