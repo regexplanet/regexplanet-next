@@ -50,6 +50,6 @@ export const php: RegexEngine = {
   ],
   short_name: "PHP",
   source_url: "https://github.com/regexplanet/regexplanet-php",
-  status_url: "https://regexplanet-php.appspot.com/status.php",
-  test_url: "https://regexplanet-php.appspot.com/test.php",
+  status_url: "https://php.gcr.regexplanet.com/status.php",
+  test_url: "https://php.gcr.regexplanet.com/test.php",
 };

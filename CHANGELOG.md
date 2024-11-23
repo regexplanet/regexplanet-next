@@ -1,5 +1,7 @@
 # Change Log
 
+* 2024-11-23: PHP moved to Docker, updated to 8.4
+* 2024-11-15: .Net moved to Docker, updated to version 8
 * 2024-11-10: Go moved to CloudRun
 * 2024-11-03: Noscript working
 * 2024-10-30: Github profile generator
