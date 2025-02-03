@@ -73,6 +73,6 @@ export const java: RegexEngine = {
   ],
   short_name: "Java",
   source_url: "https://github.com/regexplanet/regexplanet-java",
-  status_url: "https://regexplanet-java.appspot.com/status.jsp",
-  test_url: "https://regexplanet-java.appspot.com/test.jsp",
+  status_url: "https://java.gcr.regexplanet.com/status.json",
+  test_url: "https://java.gcr.regexplanet.com/test.json",
 };
