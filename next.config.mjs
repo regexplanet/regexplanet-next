@@ -4,13 +4,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/advanced/',
-        destination: '/',
+        source: "/advanced/",
+        destination: "/",
         permanent: false,
       },
       {
-        source: '/advanced/index.html',
-        destination: '/',
+        source: "/advanced/index.html",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/advanced/status.html",
+        destination: "/status.html",
         permanent: false,
       },
       /*
@@ -26,61 +31,66 @@ const nextConfig = {
       },
       */
       {
-        source: '/simple/previous.html',
-        destination: '/advanced/java/index.html',
+        source: "/simple/previous.html",
+        destination: "/advanced/java/index.html",
         permanent: false,
       },
       {
-        source: '/support/',
-        destination: '/support/index.html',
+        source: "/support/",
+        destination: "/support/index.html",
         permanent: false,
       },
       {
-        source: '/support/api.html',
-        destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/CONTRIBUTING.md#backend-api',
+        source: "/support/api.html",
+        destination:
+          "https://github.com/regexplanet/regexplanet-next/blob/main/CONTRIBUTING.md#backend-api",
         permanent: false,
       },
       {
-        source: '/support/credits.html',
-        destination: 'https://github.com/regexplanet/regexplanet-next/tree/main?tab=readme-ov-file#credits',
+        source: "/support/credits.html",
+        destination:
+          "https://github.com/regexplanet/regexplanet-next/tree/main?tab=readme-ov-file#credits",
         permanent: false,
       },
       {
-        source: '/support/engines.html',
-        destination: '/status.html',
+        source: "/support/engines.html",
+        destination: "/status.html",
         permanent: false,
       },
       {
-        source: '/support/history.html',
-        destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/CHANGELOG.md',
+        source: "/support/history.html",
+        destination:
+          "https://github.com/regexplanet/regexplanet-next/blob/main/CHANGELOG.md",
         permanent: false,
       },
       {
-        source: '/support/license.html',
-        destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/LICENSE.txt',
+        source: "/support/license.html",
+        destination:
+          "https://github.com/regexplanet/regexplanet-next/blob/main/LICENSE.txt",
         permanent: false,
       },
       {
-        source: '/support/privacy.html',
-        destination: '/legal/privacy.html',
+        source: "/support/privacy.html",
+        destination: "/legal/privacy.html",
         permanent: false,
       },
       {
-        source: '/support/terms.html',
-        destination: '/legal/terms.html',
+        source: "/support/terms.html",
+        destination: "/legal/terms.html",
         permanent: false,
       },
       {
-        source: '/support/todo.html',
-        destination: 'https://github.com/regexplanet/regexplanet-next/blob/main/TODO.md',
+        source: "/support/todo.html",
+        destination:
+          "https://github.com/regexplanet/regexplanet-next/blob/main/TODO.md",
         permanent: false,
-      }
+      },
       /* did not work: {
         source: '/advanced/:slug/',
         destination: '/advanced/:slug/index.html',
         permanent: false,
       }, */
-    ]
+    ];
   },};
 
 export default nextConfig;
