@@ -10,7 +10,8 @@ export const go: RegexEngine = {
   links: { "re2 syntax": "https://github.com/google/re2/wiki/Syntax" },
   logo_icon: "https://www.vectorlogo.zone/logos/golang/golang-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/golang/golang-ar21.svg",
-  nodeping_id: "cvdmibs4-lyts-48bp-8l93-a4y3ihfrkncc",
+  nodeping_uuid: "cvdmibs4-lyts-48bp-8l93-a4y3ihfrkncc",
+  nodeping_id: "201109281250J5K3P-QNG97T68",
   options: [
     {
       code: "posix",

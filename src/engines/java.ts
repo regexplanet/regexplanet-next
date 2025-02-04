@@ -11,7 +11,8 @@ export const java: RegexEngine = {
   links: {},
   logo_icon: "https://www.vectorlogo.zone/logos/java/java-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/java/java-ar21.svg",
-  nodeping_id: "m84cfhq9-gk43-44r5-8mih-syzu6vp45tuk",
+  nodeping_uuid: "m84cfhq9-gk43-44r5-8mih-syzu6vp45tuk",
+  nodeping_id: "201109281250J5K3P-J5GOX6A4",
   notfound: ["kotlin"],
   options: [
     {

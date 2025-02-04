@@ -14,7 +14,8 @@ export const postgresql: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/postgresql/postgresql-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/postgresql/postgresql-ar21.svg",
-  nodeping_id: "43ytdj0n-jeiu-4zta-8ptc-wr7xmxztp5i8",
+  nodeping_uuid: "43ytdj0n-jeiu-4zta-8ptc-wr7xmxztp5i8",
+  nodeping_id: "201109281250J5K3P-0NWQHT4O",
   options: [
     { code: "b", description: "rest of RE is a BRE" },
     {

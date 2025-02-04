@@ -13,7 +13,8 @@ export const php: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/php/php-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/php/php-ar21.svg",
-  nodeping_id: "tv5izwkj-w7m2-4epk-8l9i-2z8y36h0o1n1",
+  nodeping_uuid: "tv5izwkj-w7m2-4epk-8l9i-2z8y36h0o1n1",
+  nodeping_id: "201109281250J5K3P-QZKHTYE7",
   options: [
     {
       code: "i",

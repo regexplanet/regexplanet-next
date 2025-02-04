@@ -11,6 +11,7 @@ export const browser: RegexEngine = {
   links: {},
   logo_icon: "/images/browsers/browser-icon.svg",
   logo_ar21: "/images/browsers/browser-ar21.svg",
+  nodeping_uuid: "N/A",
   nodeping_id: "N/A",
   notfound: ["javascript", "typescript"],
   options: [

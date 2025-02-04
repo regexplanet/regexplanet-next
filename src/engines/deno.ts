@@ -16,7 +16,8 @@ export const deno: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/deno/deno-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/deno/deno-ar21.svg",
-  nodeping_id: "9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
+  nodeping_uuid: "9z4pmj0b-ve3m-42s9-8s07-6c53rlel69iy",
+  nodeping_id: "201109281250J5K3P-43JMJ07Z",
   notfound: ["javascript", "typescript"],
   options: [
     {

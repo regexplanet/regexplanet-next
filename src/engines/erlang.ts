@@ -10,6 +10,7 @@ export const erlang: RegexEngine = {
   links: {},
   logo_ar21: "https://www.vectorlogo.zone/logos/erlang/erlang-ar21.svg",
   logo_icon: "https://www.vectorlogo.zone/logos/erlang/erlang-icon.svg",
+  nodeping_uuid: "LATER",
   nodeping_id: "LATER",
   options: [],
   short_name: "Erlang",

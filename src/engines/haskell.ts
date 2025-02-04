@@ -8,7 +8,6 @@ export const haskell: RegexEngine = {
   help_label: "Text.Regex",
   help_url:
     "http://hackage.haskell.org/package/regex-compat-0.95.1/docs/Text-Regex.html",
-  nodeping_id: "kt5c4lp3-80p5-4rzk-8nq2-kqtyvq4p1a2d",
   links: {
     haskellwiki: "http://www.haskell.org/haskellwiki/Regular_expressions",
     "Text.Regex.TDFA":
@@ -18,6 +17,8 @@ export const haskell: RegexEngine = {
   },
   logo_ar21: "https://www.vectorlogo.zone/logos/haskell/haskell-ar21.svg",
   logo_icon: "https://www.vectorlogo.zone/logos/haskell/haskell-icon.svg",
+  nodeping_uuid: "kt5c4lp3-80p5-4rzk-8nq2-kqtyvq4p1a2d",
+  nodeping_id: "201109281250J5K3P-5LIQI418",
   options: [
     {
       code: "ignorecase",

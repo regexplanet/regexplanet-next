@@ -12,7 +12,8 @@ export const ruby: RegexEngine = {
   },
   logo_icon: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-icon.svg",
   logo_ar21: "https://www.vectorlogo.zone/logos/ruby-lang/ruby-lang-ar21.svg",
-  nodeping_id: "e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
+  nodeping_uuid: "e6od3bui-a5wl-49ff-8698-0cbtjc52rqw1",
+  nodeping_id: "201109281250J5K3P-29AKB1P0",
   options: [
     {
       code: "x",
