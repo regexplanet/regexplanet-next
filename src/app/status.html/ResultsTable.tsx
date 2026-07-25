@@ -6,6 +6,8 @@ import { getEngines } from '@/engines';
 import Link from 'next/link';
 import fetchJsonp from 'fetch-jsonp';
 import { EngineStatus } from '@/types/EngineStatus';
+import { DetailModal } from './DetailModal';
+import { RegexEngine } from '@/engines/RegexEngine';
 
 
 function getHost(status_url: string|undefined) {
@@ -27,16 +29,20 @@ function getHost(status_url: string|undefined) {
     </>
 }
 
-function versionDetail(version: string, detail?:string) {
+function versionDetail(engine: RegexEngine, version: string, detail?:EngineStatus) {
     if (detail) {
-        return (<details><summary>{version}</summary>{detail}</details>)
+        return (<>
+        {version}
+        <DetailModal handle={engine.handle} title={engine.short_name} details={JSON.stringify(detail, null, 2)} />
+        </>
+        )
     }
     return <>{version}</>
 }
 
 const SLOW_TIME_MILLIS = 10 * 1000;
 
-function EngineStatusColumns(status: EngineStatus | undefined) {
+function EngineStatusColumns(engine: RegexEngine, status: EngineStatus | undefined) {
     if (!status) {
         return (
             <>
@@ -85,7 +91,7 @@ function EngineStatusColumns(status: EngineStatus | undefined) {
             <td>
                 <img src={icon_url} alt={alt_text} title={alt_text} /> {text}
             </td>
-            <td>{versionDetail(status.version, status.detail)}</td>
+            <td>{versionDetail(engine, status.version, status)}</td>
             <td className="d-none d-lg-table-cell">{status.time_millis}</td>
         </>
     );
@@ -102,12 +108,8 @@ async function fetchOneResult(url: string): Promise<EngineStatus> {
         }
         const data = await response.json();
         console.log('fetchone success', url, data);
-        return {
-            success: data.success,
-            version: data.version,
-            detail: data.detail,
-            time_millis: elapsed,
-        };
+        data.time_millis = elapsed;
+        return data;
     } catch (err) {
         console.log('fetch error', err);
         return {
@@ -169,7 +171,7 @@ export function ResultsTable() {
                             <td>
                                 <img className="pe-2" src={engine.logo_icon} alt={engine.short_name} style={{ "height": "1.25em" }} />&nbsp;<Link href={`/advanced/${engine.handle}/index.html`} >{engine.short_name}</Link>
                             </td>
-                            {EngineStatusColumns(results[index])}
+                            {EngineStatusColumns(engine, results[index])}
                             <td className="d-none d-lg-table-cell">{getHost(engine.status_url)}</td>
                         </tr>
                     ))}
