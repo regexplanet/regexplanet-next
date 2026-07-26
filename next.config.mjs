@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  experimental: {
+    useTypeScriptCli: true,
+  },
   async redirects() {
     return [
       {
@@ -91,6 +94,7 @@ const nextConfig = {
         permanent: false,
       }, */
     ];
-  },};
+  },
+};
 
 export default nextConfig;

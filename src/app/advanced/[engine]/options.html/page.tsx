@@ -2,8 +2,9 @@ import { getEngine } from '@/engines';
 import { RegexOption } from '@/engines/RegexEngine';
 import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }: { params: { engine: string } }) {
-    const engine = getEngine(params.engine);
+export async function generateMetadata({ params }: { params: Promise<{ engine: string }> }) {
+    const { engine: engineHandle } = await params;
+    const engine = getEngine(engineHandle);
     if (!engine) {
         return {};
     }
@@ -24,8 +25,9 @@ function OptionValue(theOption: RegexOption): string {
     return theOption.code;
 }
 
-export default function Page({ params }: { params: { engine: string } }) {
-    const engine = getEngine(params.engine);
+export default async function Page({ params }: { params: Promise<{ engine: string }> }) {
+    const { engine: engineHandle } = await params;
+    const engine = getEngine(engineHandle);
     if (!engine) {
         return notFound();
     }

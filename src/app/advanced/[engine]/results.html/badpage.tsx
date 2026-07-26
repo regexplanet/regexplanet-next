@@ -1,10 +1,11 @@
 'use client';
 import { getEngine } from "@/engines";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { useFormStatus } from "react-dom";
 
-export default function Page({ params }: { params: { engine: string } }) {
+export default function Page() {
     const { pending, data, method } = useFormStatus();
+    const params = useParams<{ engine: string }>();
 
     const engine = getEngine(params.engine);
     if (!engine) {

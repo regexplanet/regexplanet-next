@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 
-export default async function Page({ params }: { params: { engine: string } }) {
-    redirect(`/advanced/${params.engine}/index.html`);
+export default async function Page({ params }: { params: Promise<{ engine: string }> }) {
+    const { engine } = await params;
+    redirect(`/advanced/${engine}/index.html`);
 }

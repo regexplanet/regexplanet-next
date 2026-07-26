@@ -20,21 +20,23 @@ async function renderPage(
 
 export async function GET(
   request: Request,
-  { params }: { params: { engine: string } }
+  { params }: { params: Promise<{ engine: string }> }
 ) {
-  const engine = getEngine(params.engine);
+  const { engine: engineHandle } = await params;
+  const engine = getEngine(engineHandle);
   if (!engine) {
     return notFound();
   }
 
-  redirect("/advanced/${engine.handle}/results.html");
+  redirect(`/advanced/${engine.handle}/results.html`);
 }
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { engine: string } }
+  { params }: { params: Promise<{ engine: string }> }
 ) {
-  const engine = getEngine(params.engine);
+  const { engine: engineHandle } = await params;
+  const engine = getEngine(engineHandle);
   if (!engine) {
     return notFound();
   }

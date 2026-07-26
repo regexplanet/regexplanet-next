@@ -9,8 +9,9 @@ import { cleanupSearchParam } from '@/functions/cleanupSearchParam';
 import { cleanupSearchParamArray } from '@/functions/cleanupSearchParamArray';
 import { runTestPage } from './runTestPage';
 
-export async function generateMetadata({ params }: { params: { engine: string } }) {
-    const engine = getEngine(params.engine);
+export async function generateMetadata({ params }: { params: Promise<{ engine: string }> }) {
+    const { engine: engineHandle } = await params;
+    const engine = getEngine(engineHandle);
     if (!engine) {
         return {};
     }
@@ -25,10 +26,13 @@ export default async function Page({
     params,
     searchParams,
 }: {
-    params: { engine: string }
-    searchParams: { [key: string]: string | string[] | undefined }
+    params: Promise<{ engine: string }>
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    const engine = getEngine(params.engine);
+    const { engine: engineHandle } = await params;
+    const resolvedSearchParams = await searchParams;
+
+    const engine = getEngine(engineHandle);
     if (!engine) {
         return notFound();
     }
@@ -44,14 +48,14 @@ export default async function Page({
         </div>;
     }
 
-    const testUrl = cleanupSearchParam(searchParams["testurl"]) || engine.test_url || `javascript:runBrowserTest`;
+    const testUrl = cleanupSearchParam(resolvedSearchParams["testurl"]) || engine.test_url || `javascript:runBrowserTest`;
 
     const testInput:TestInput = {
         engine: engine.handle,
-        regex: cleanupSearchParam(searchParams["regex"]),
-        replacement: cleanupSearchParam(searchParams["replacement"]),
-        options: cleanupSearchParamArray(searchParams["option"]),
-        inputs: cleanupSearchParamArray(searchParams["input"]),
+        regex: cleanupSearchParam(resolvedSearchParams["regex"]),
+        replacement: cleanupSearchParam(resolvedSearchParams["replacement"]),
+        options: cleanupSearchParamArray(resolvedSearchParams["option"]),
+        inputs: cleanupSearchParamArray(resolvedSearchParams["input"]),
     }
 
     while (testInput.inputs.length < 5) {
